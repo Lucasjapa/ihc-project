@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEI Gestão - Recuperar Senha</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .recover-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Left Panel - Promotional */
+        .recover-left {
+            width: 50%;
+            background-color: #2563eb;
+            color: white;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .recover-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .recover-logo-icon {
+            width: 48px;
+            height: 48px;
+            background-color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .recover-logo-text {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .recover-tagline {
+            font-size: 20px;
+            margin-bottom: 48px;
+            opacity: 0.95;
+        }
+
+        .recover-features {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .recover-feature {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .recover-feature-icon {
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .recover-feature-text {
+            font-size: 16px;
+        }
+
+        /* Right Panel - Recover Form */
+        .recover-right {
+            width: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .recover-form-container {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .recover-welcome {
+            margin-bottom: 32px;
+        }
+
+        .recover-welcome h1 {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .recover-welcome p {
+            font-size: 16px;
+            color: #6b7280;
+        }
+
+        .recover-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .recover-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .recover-form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .recover-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .recover-input-icon {
+            position: absolute;
+            left: 16px;
+            color: #6b7280;
+            pointer-events: none;
+        }
+
+        .recover-input {
+            width: 100%;
+            padding: 12px 16px 12px 48px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .recover-input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .recover-btn {
+            width: 100%;
+            padding: 14px 24px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background-color 0.2s;
+            margin-top: 8px;
+        }
+
+        .recover-btn:hover {
+            background-color: #1e40af;
+        }
+
+        .recover-login {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .recover-login a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .recover-login a:hover {
+            color: #1e40af;
+        }
+
+        @media (max-width: 768px) {
+            .recover-container {
+                flex-direction: column;
+            }
+
+            .recover-left {
+                width: 100%;
+                padding: 40px;
+            }
+
+            .recover-right {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="recover-container">
+        <!-- Left Panel -->
+        <div class="recover-left">
+            <div class="recover-logo">
+                <div class="recover-logo-icon">
+                    <svg width="24" height="24" fill="#2563eb" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="recover-logo-text">MEI Gestão</div>
+            </div>
+            <p class="recover-tagline">Gerencie suas finanças com inteligência e simplicidade</p>
+            <div class="recover-features">
+                <div class="recover-feature">
+                    <div class="recover-feature-icon">
+                        <svg width="16" height="16" fill="#2563eb" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="recover-feature-text">Controle total de receitas e despesas</div>
+                </div>
+                <div class="recover-feature">
+                    <div class="recover-feature-icon">
+                        <svg width="16" height="16" fill="#2563eb" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="recover-feature-text">Relatórios detalhados e insights</div>
+                </div>
+                <div class="recover-feature">
+                    <div class="recover-feature-icon">
+                        <svg width="16" height="16" fill="#2563eb" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="recover-feature-text">Gestão simplificada para MEI</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="recover-right">
+            <div class="recover-form-container">
+                <div class="recover-welcome">
+                    <h1>Recuperar Senha</h1>
+                    <p>Digite seu e-mail para receber instruções de recuperação</p>
+                </div>
+                <form class="recover-form" id="recoverForm">
+                    <div class="recover-form-group">
+                        <label for="recoverEmail">E-mail</label>
+                        <div class="recover-input-wrapper">
+                            <svg class="recover-input-icon" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                            <input type="email" id="recoverEmail" class="recover-input" placeholder="seu@email.com" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="recover-btn">
+                        Enviar Instruções
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
+                        </svg>
+                    </button>
+                </form>
+                <div class="recover-login">
+                    Lembrou sua senha? <a href="index.html">Voltar ao login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const recoverForm = document.getElementById('recoverForm');
+
+        recoverForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('recoverEmail').value;
+            
+            // Simular envio de instruções
+            alert('Instruções de recuperação de senha foram enviadas para ' + email);
+            
+            // Redirecionar para login após 2 segundos
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEI Gestão - Criar Conta</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .signup-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Left Panel - Promotional */
+        .signup-left {
+            width: 40%;
+            background-color: #2563eb;
+            color: white;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .signup-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .signup-logo-icon {
+            width: 48px;
+            height: 48px;
+            background-color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .signup-logo-text {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .signup-tagline {
+            font-size: 20px;
+            margin-bottom: 48px;
+            opacity: 0.95;
+        }
+
+        .signup-features {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .signup-feature {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .signup-feature-icon {
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .signup-feature-text {
+            font-size: 16px;
+        }
+
+        /* Right Panel - Signup Form */
+        .signup-right {
+            width: 60%;
+            background-color: white;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .signup-form-container {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .signup-welcome {
+            margin-bottom: 32px;
+        }
+
+        .signup-welcome h1 {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .signup-welcome p {
+            font-size: 16px;
+            color: #6b7280;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .form-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+
+        .signup-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .signup-form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .signup-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .signup-input-icon {
+            position: absolute;
+            left: 16px;
+            color: #6b7280;
+            pointer-events: none;
+        }
+
+        .signup-input {
+            width: 100%;
+            padding: 12px 16px 12px 48px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .signup-input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .signup-input-password {
+            padding-right: 48px;
+        }
+
+        .signup-password-toggle {
+            position: absolute;
+            right: 16px;
+            cursor: pointer;
+            color: #6b7280;
+            transition: color 0.2s;
+        }
+
+        .signup-password-toggle:hover {
+            color: #2563eb;
+        }
+
+        .signup-terms {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .signup-terms input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .signup-terms label {
+            font-size: 14px;
+            color: #1f2937;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .signup-terms a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .signup-terms a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-btn {
+            width: 100%;
+            padding: 14px 24px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background-color 0.2s;
+            margin-top: 8px;
+        }
+
+        .signup-btn:hover {
+            background-color: #1e40af;
+        }
+
+        .signup-login {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .signup-login a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .signup-login a:hover {
+            color: #1e40af;
+        }
+
+        @media (max-width: 768px) {
+            .signup-container {
+                flex-direction: column;
+            }
+
+            .signup-left {
+                width: 100%;
+                padding: 40px;
+            }
+
+            .signup-right {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <!-- Left Panel -->
+        <div class="signup-left">
+            <div class="signup-logo">
+                <div class="signup-logo-icon">
+                    <svg width="24" height="24" fill="#2563eb" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="signup-logo-text">MEI Gestão</div>
+            </div>
+            <p class="signup-tagline">Gerencie suas finanças com inteligência e simplicidade</p>
+            <div class="signup-features">
+                <div class="signup-feature">
+                    <div class="signup-feature-icon">
+                        <svg width="16" height="16" fill="#2563eb" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="signup-feature-text">Controle total de receitas e despesas</div>
+                </div>
+                <div class="signup-feature">
+                    <div class="signup-feature-icon">
+                        <svg width="16" height="16" fill="#2563eb" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="signup-feature-text">Relatórios detalhados e insights</div>
+                </div>
+                <div class="signup-feature">
+                    <div class="signup-feature-icon">
+                        <svg width="16" height="16" fill="#2563eb" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="signup-feature-text">Gestão simplificada para MEI</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="signup-right">
+            <div class="signup-form-container">
+                <div class="signup-welcome">
+                    <h1>Crie sua conta</h1>
+                    <p>Preencha os dados abaixo para começar</p>
+                </div>
+                <form class="signup-form" id="signupForm">
+                    <!-- Dados Pessoais -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Dados Pessoais</h3>
+                        <div class="signup-form-group">
+                            <label for="fullName">Nome Completo</label>
+                            <div class="signup-input-wrapper">
+                                <svg class="signup-input-icon" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                                </svg>
+                                <input type="text" id="fullName" class="signup-input" placeholder="Seu nome completo" required>
+                            </div>
+                        </div>
+                        <div class="signup-form-group">
+                            <label for="signupEmail">E-mail</label>
+                            <div class="signup-input-wrapper">
+                                <svg class="signup-input-icon" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                                </svg>
+                                <input type="email" id="signupEmail" class="signup-input" placeholder="seu@email.com" required>
+                            </div>
+                        </div>
+                        <div class="signup-form-group">
+                            <label for="cpf">CPF</label>
+                            <div class="signup-input-wrapper">
+                                <svg class="signup-input-icon" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/>
+                                </svg>
+                                <input type="text" id="cpf" class="signup-input" placeholder="000.000.000-00" required>
+                            </div>
+                        </div>
+                        <div class="signup-form-group">
+                            <label for="phone">Telefone</label>
+                            <div class="signup-input-wrapper">
+                                <svg class="signup-input-icon" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                </svg>
+                                <input type="tel" id="phone" class="signup-input" placeholder="(00) 00000-0000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dados do Negócio -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Dados do Negócio</h3>
+                        <div class="signup-form-group">
+                            <label for="businessName">Nome do Negócio</label>
+                            <div class="signup-input-wrapper">
+                                <svg class="signup-input-icon" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/>
+                                </svg>
+                                <input type="text" id="businessName" class="signup-input" placeholder="Nome da sua empresa">
+                            </div>
+                        </div>
+                        <div class="signup-form-group">
+                            <label for="cnpj">CNPJ</label>
+                            <div class="signup-input-wrapper">
+                                <svg class="signup-input-icon" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/>
+                                </svg>
+                                <input type="text" id="cnpj" class="signup-input" placeholder="00.000.000/0000-00">
+                            </div>
+                        </div>
+                        <div class="signup-form-group">
+                            <label for="mainActivity">Atividade Principal</label>
+                            <div class="signup-input-wrapper">
+                                <svg class="signup-input-icon" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                                    <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"/>
+                                </svg>
+                                <input type="text" id="mainActivity" class="signup-input" placeholder="Ex: Comércio varejista">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Segurança -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Segurança</h3>
+                        <div class="signup-form-group">
+                            <label for="signupPassword">Senha</label>
+                            <div class="signup-input-wrapper">
+                                <svg class="signup-input-icon" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <input type="password" id="signupPassword" class="signup-input signup-input-password" placeholder="Mínimo 8 caracteres" required minlength="8">
+                                <svg class="signup-password-toggle" id="toggleSignupPassword" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="signup-form-group">
+                            <label for="confirmPassword">Confirmar Senha</label>
+                            <div class="signup-input-wrapper">
+                                <svg class="signup-input-icon" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <input type="password" id="confirmPassword" class="signup-input signup-input-password" placeholder="Digite a senha novamente" required minlength="8">
+                                <svg class="signup-password-toggle" id="toggleConfirmPassword" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Termos -->
+                    <div class="signup-terms">
+                        <input type="checkbox" id="acceptTerms" name="terms" required>
+                        <label for="acceptTerms">
+                            Aceito os <a href="#">termos de uso</a> e <a href="#">política de privacidade</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="signup-btn">
+                        Criar Conta
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                </form>
+                <div class="signup-login">
+                    Já tem uma conta? <a href="index.html">Faça login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        const toggleSignupPassword = document.getElementById('toggleSignupPassword');
+        const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+        const signupPassword = document.getElementById('signupPassword');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const signupForm = document.getElementById('signupForm');
+
+        const eyeOpenIcon = `
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+        `;
+
+        const eyeClosedIcon = `
+            <path fill-rule="evenodd" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.906 1.255l-1.387-1.387zm5.196 5.196L10 9.586V7a3 3 0 00-3 3v.586l1.903 1.903zM8 12a4 4 0 014-4v.586l-4 4V12z" clip-rule="evenodd"/>
+            <path d="M5 12a5 5 0 017.446-4.446l-7.892 7.892A4.998 4.998 0 015 12z"/>
+        `;
+
+        toggleSignupPassword.addEventListener('click', () => {
+            const type = signupPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+            signupPassword.setAttribute('type', type);
+            toggleSignupPassword.innerHTML = type === 'text' ? eyeClosedIcon : eyeOpenIcon;
+        });
+
+        toggleConfirmPassword.addEventListener('click', () => {
+            const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirmPassword.setAttribute('type', type);
+            toggleConfirmPassword.innerHTML = type === 'text' ? eyeClosedIcon : eyeOpenIcon;
+        });
+
+        // Form validation
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const password = signupPassword.value;
+            const confirm = confirmPassword.value;
+            
+            if (password !== confirm) {
+                alert('As senhas não coincidem!');
+                return;
+            }
+            
+            if (password.length < 8) {
+                alert('A senha deve ter no mínimo 8 caracteres!');
+                return;
+            }
+            
+            // Redirecionar para o dashboard após cadastro
+            window.location.href = 'index.html';
+        });
+
+        // Máscaras de input
+        const cpfInput = document.getElementById('cpf');
+        const phoneInput = document.getElementById('phone');
+        const cnpjInput = document.getElementById('cnpj');
+
+        cpfInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                e.target.value = value;
+            }
+        });
+
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/(\d{2})(\d)/, '($1) $2');
+                value = value.replace(/(\d{5})(\d)/, '$1-$2');
+                e.target.value = value;
+            }
+        });
+
+        cnpjInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 14) {
+                value = value.replace(/(\d{2})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
+                value = value.replace(/(\d{3})(\d)/, '$1/$2');
+                value = value.replace(/(\d{4})(\d)/, '$1-$2');
+                e.target.value = value;
+            }
+        });
+    </script>
+</body>
+</html>
+

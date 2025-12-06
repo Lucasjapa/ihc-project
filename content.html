@@ -1,0 +1,96 @@
+<!-- Main Content -->
+<main class="main-content">
+    <div class="header">
+        <h1>Dashboard</h1>
+        <p>Bem-vindo ao seu painel de controle financeiro</p>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="summary-cards">
+        <div class="card">
+            <div class="card-title">Receita Total</div>
+            <div class="card-value">R$ 45.230,00</div>
+            <div class="card-change positive">+12,5% este mês</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Despesas Total</div>
+            <div class="card-value">R$ 28.450,00</div>
+            <div class="card-change negative">+5,2% este mês</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Saldo Atual</div>
+            <div class="card-value">R$ 16.780,00</div>
+            <div class="card-change positive">+18,3% este mês</div>
+        </div>
+    </div>
+
+    <!-- New Transaction Button -->
+    <div style="display: flex; justify-content: flex-end;">
+        <button class="new-transaction-btn" id="openModalBtn">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"/>
+            </svg>
+            Novo Lançamento
+        </button>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="transactions-section">
+        <h2 class="section-title">Transações recentes</h2>
+        <div class="tabs">
+            <button class="tab">Receitas</button>
+            <button class="tab">Despesas</button>
+        </div>
+        <div class="transaction-list">
+            <div class="transaction-item">
+                <div class="transaction-icon income">
+                    <svg width="24" height="24" fill="#10b981" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="transaction-details">
+                    <div class="transaction-description">Venda de Produto #1234</div>
+                    <div class="transaction-date">05/11/2025</div>
+                </div>
+                <div class="transaction-amount income">+ R$ 850,00</div>
+            </div>
+            <div class="transaction-item">
+                <div class="transaction-icon income">
+                    <svg width="24" height="24" fill="#10b981" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="transaction-details">
+                    <div class="transaction-description">Serviço Prestado - Cliente ABC</div>
+                    <div class="transaction-date">04/11/2025</div>
+                </div>
+                <div class="transaction-amount income">+ R$ 1.200,00</div>
+            </div>
+            <div class="transaction-item">
+                <div class="transaction-icon expense">
+                    <svg width="24" height="24" fill="#ef4444" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="transaction-details">
+                    <div class="transaction-description">Fornecedor XYZ Ltda</div>
+                    <div class="transaction-date">03/11/2025</div>
+                </div>
+                <div class="transaction-amount expense">- R$ 450,00</div>
+            </div>
+            <div class="transaction-item">
+                <div class="transaction-icon expense">
+                    <svg width="24" height="24" fill="#ef4444" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                </div>
+                <div class="transaction-details">
+                    <div class="transaction-description">Conta de Luz - Estabelecimento</div>
+                    <div class="transaction-date">02/11/2025</div>
+                </div>
+                <div class="transaction-amount expense">- R$ 850,00</div>
+            </div>
+        </div>
+    </div>
+</main>
+
