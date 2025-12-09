@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEI Gestão - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ajuda.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
+
 <body>
     <!-- Sidebar -->
     <aside class="sidebar">
@@ -15,31 +23,38 @@
             <ul class="nav-menu">
                 <li class="nav-item active" data-page="dashboard" id="navDashboard">
                     <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                        <path
+                            d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                     </svg>
                     <span>Dashboard</span>
                 </li>
                 <li class="nav-item" data-page="receitas" id="navReceitas">
                     <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                            clip-rule="evenodd" />
                     </svg>
                     <span>Receitas</span>
                 </li>
                 <li class="nav-item" data-page="despesas" id="navDespesas">
                     <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
+                            clip-rule="evenodd" />
                     </svg>
                     <span>Despesas</span>
                 </li>
                 <li class="nav-item" data-page="relatorios" id="navRelatorios">
                     <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                        <path
+                            d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
                     </svg>
                     <span>Relatórios</span>
                 </li>
                 <li class="nav-item" data-page="ajuda" id="navAjuda">
                     <svg class="nav-icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd"
+                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                            clip-rule="evenodd" />
                     </svg>
                     <span>Ajuda</span>
                 </li>
@@ -57,52 +72,56 @@
                 <p>Bem-vindo ao seu painel de controle financeiro</p>
             </div>
 
-        <!-- Summary Cards -->
-        <div class="summary-cards">
-            <div class="card">
-                <div class="card-title">Receita Total</div>
-                <div class="card-value" id="totalReceitas">R$ 0,00</div>
-                <div class="card-change positive">+12,5% este mês</div>
+            <!-- Summary Cards -->
+            <div class="summary-cards">
+                <div class="card">
+                    <div class="card-title">Receita Total</div>
+                    <div class="card-value" id="totalReceitas">R$ 0,00</div>
+                    <div class="card-change positive">+12,5% este mês</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Despesas Total</div>
+                    <div class="card-value" id="totalDespesas">R$ 0,00</div>
+                    <div class="card-change negative">+5,2% este mês</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Saldo Atual</div>
+                    <div class="card-value" id="saldoAtual">R$ 0,00</div>
+                    <div class="card-change positive">+18,3% este mês</div>
+                </div>
             </div>
-            <div class="card">
-                <div class="card-title">Despesas Total</div>
-                <div class="card-value" id="totalDespesas">R$ 0,00</div>
-                <div class="card-change negative">+5,2% este mês</div>
-            </div>
-            <div class="card">
-                <div class="card-title">Saldo Atual</div>
-                <div class="card-value" id="saldoAtual">R$ 0,00</div>
-                <div class="card-change positive">+18,3% este mês</div>
-            </div>
-        </div>
 
-        <!-- New Transaction Button -->
-        <div class="dashboard-actions">
-            <button class="gerar-das-btn" id="gerarDasBtn">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/>
-                </svg>
-                Gerar DAS
-            </button>
-            <button class="new-transaction-btn" id="openModalBtn">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"/>
-                </svg>
-                Novo Lançamento
-            </button>
-        </div>
+            <!-- New Transaction Button -->
+            <div class="dashboard-actions">
+                <button class="gerar-das-btn" id="gerarDasBtn">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    Gerar DAS
+                </button>
+                <button class="new-transaction-btn" id="openModalBtn">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    Novo Lançamento
+                </button>
+            </div>
 
-        <!-- Recent Transactions -->
-        <div class="transactions-section">
-            <h2 class="section-title">Transações recentes</h2>
-            <div class="tabs">
-                <button class="tab active" id="tabReceitas">Receitas</button>
-                <button class="tab" id="tabDespesas">Despesas</button>
+            <!-- Recent Transactions -->
+            <div class="transactions-section">
+                <h2 class="section-title">Transações recentes</h2>
+                <div class="tabs">
+                    <button class="tab active" id="tabReceitas">Receitas</button>
+                    <button class="tab" id="tabDespesas">Despesas</button>
+                </div>
+                <div class="transaction-list" id="recentTransactionsList">
+                    <!-- Transações serão inseridas aqui via JavaScript -->
+                </div>
             </div>
-            <div class="transaction-list" id="recentTransactionsList">
-                <!-- Transações serão inseridas aqui via JavaScript -->
-            </div>
-        </div>
         </div>
 
         <!-- Receitas Content -->
@@ -114,7 +133,9 @@
                 </div>
                 <button class="back-btn" id="backToDashboardBtn">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style="margin-right: 8px;">
-                        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd"
+                            d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+                            clip-rule="evenodd" />
                     </svg>
                     Voltar ao Dashboard
                 </button>
@@ -125,6 +146,46 @@
                     <h2 class="revenues-title">Todas as Receitas</h2>
                     <span class="revenues-count" id="receitasTotalCount">25 receitas</span>
                 </div>
+
+                <!-- Filtros de Receitas -->
+                <div class="revenues-filters">
+                    <div class="filter-group">
+                        <label for="dataInicialReceitas">Data Inicial</label>
+                        <input type="date" id="dataInicialReceitas" class="filter-input">
+                    </div>
+                    <div class="filter-group">
+                        <label for="dataFinalReceitas">Data Final</label>
+                        <input type="date" id="dataFinalReceitas" class="filter-input">
+                    </div>
+                    <div class="filter-group">
+                        <label for="ordenacaoReceitas">Ordenação</label>
+                        <div class="select-wrapper">
+                            <select id="ordenacaoReceitas" class="filter-select">
+                                <option value="newest">Mais Recentes</option>
+                                <option value="oldest">Mais Antigos</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="filter-btn apply" id="aplicarFiltrosReceitas">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            Aplicar Filtros
+                        </button>
+                        <button class="filter-btn clear" id="limparFiltrosReceitas">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            Limpar
+                        </button>
+                    </div>
+                </div>
+
                 <div class="revenues-table">
                     <div class="table-header">
                         <div class="table-col">Data</div>
@@ -139,7 +200,9 @@
                 <div class="pagination" id="receitasPagination">
                     <button class="pagination-btn" id="prevPageBtn" disabled>
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd"
+                                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                clip-rule="evenodd" />
                         </svg>
                         Anterior
                     </button>
@@ -149,7 +212,9 @@
                     <button class="pagination-btn" id="nextPageBtn">
                         Próxima
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd" />
                         </svg>
                     </button>
                 </div>
@@ -165,7 +230,9 @@
                 </div>
                 <button class="back-btn" id="backToDashboardFromDespesasBtn">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style="margin-right: 8px;">
-                        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd"
+                            d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+                            clip-rule="evenodd" />
                     </svg>
                     Voltar ao Dashboard
                 </button>
@@ -176,6 +243,46 @@
                     <h2 class="revenues-title">Todas as Despesas</h2>
                     <span class="revenues-count" id="despesasTotalCount">25 despesas</span>
                 </div>
+
+                <!-- Filtros de Despesas -->
+                <div class="revenues-filters">
+                    <div class="filter-group">
+                        <label for="dataInicialDespesas">Data Inicial</label>
+                        <input type="date" id="dataInicialDespesas" class="filter-input">
+                    </div>
+                    <div class="filter-group">
+                        <label for="dataFinalDespesas">Data Final</label>
+                        <input type="date" id="dataFinalDespesas" class="filter-input">
+                    </div>
+                    <div class="filter-group">
+                        <label for="ordenacaoDespesas">Ordenação</label>
+                        <div class="select-wrapper">
+                            <select id="ordenacaoDespesas" class="filter-select">
+                                <option value="newest">Mais Recentes</option>
+                                <option value="oldest">Mais Antigos</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="filter-btn apply" id="aplicarFiltrosDespesas">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            Aplicar Filtros
+                        </button>
+                        <button class="filter-btn clear" id="limparFiltrosDespesas">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            Limpar
+                        </button>
+                    </div>
+                </div>
+
                 <div class="revenues-table">
                     <div class="table-header">
                         <div class="table-col">Data</div>
@@ -190,7 +297,9 @@
                 <div class="pagination" id="despesasPagination">
                     <button class="pagination-btn" id="prevPageDespesasBtn" disabled>
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd"
+                                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                clip-rule="evenodd" />
                         </svg>
                         Anterior
                     </button>
@@ -200,7 +309,9 @@
                     <button class="pagination-btn" id="nextPageDespesasBtn">
                         Próxima
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd" />
                         </svg>
                     </button>
                 </div>
@@ -209,415 +320,410 @@
 
         <!-- Ajuda Content -->
         <div id="ajudaContent" class="page-content" style="display: none;">
-            <div class="header">
-                <h1>Central de Ajuda</h1>
-                <p>Encontre respostas, tutoriais e suporte para usar o MEI Gestão</p>
-            </div>
+            <header class="top-header">
+                <div>
+                    <h2>Central de Ajuda</h2>
+                    <p>Encontre respostas, tutoriais e suporte para usar o MEI Gestão</p>
+                </div>
+            </header>
 
             <!-- Search Bar -->
-            <div class="help-search">
-                <div class="search-input-wrapper">
-                    <svg width="20" height="20" fill="#6b7280" viewBox="0 0 20 20" class="search-icon">
-                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
-                    </svg>
-                    <input type="text" class="search-input" placeholder="Buscar por tutoriais, perguntas ou tópicos...">
+            <section class="search-section1">
+                <div class="search-container1">
+                    <i class="ph-bold ph-magnifying-glass"></i>
+                    <input type="text" id="help-search" placeholder="Buscar por tutoriais, perguntas ou tópicos...">
                 </div>
-            </div>
+            </section>
 
-            <!-- Top Cards -->
-            <div class="help-cards">
-                <div class="help-card">
-                    <div class="help-card-icon purple">
-                        <svg width="24" height="24" fill="white" viewBox="0 0 20 20">
-                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
-                        </svg>
+            <!-- Quick Access Cards -->
+            <section class="quick-access1">
+                <div class="quick-card1" data-section="tutorials">
+                    <div class="quick-icon1 tutorials">
+                        <i class="ph-bold ph-graduation-cap"></i>
                     </div>
                     <h3>Tutoriais</h3>
                     <p>Guias passo a passo</p>
                 </div>
-                <div class="help-card">
-                    <div class="help-card-icon green">
-                        <svg width="24" height="24" fill="white" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
-                        </svg>
+                <div class="quick-card1" data-section="faq">
+                    <div class="quick-icon1 faq">
+                        <i class="ph-bold ph-question"></i>
                     </div>
                     <h3>FAQ</h3>
                     <p>Perguntas frequentes</p>
                 </div>
-                <div class="help-card">
-                    <div class="help-card-icon orange">
-                        <svg width="24" height="24" fill="white" viewBox="0 0 20 20">
-                            <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5zM15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"/>
-                        </svg>
+                <div class="quick-card1" data-section="support">
+                    <div class="quick-icon1 support">
+                        <i class="ph-bold ph-headset"></i>
                     </div>
                     <h3>Suporte</h3>
                     <p>Fale conosco</p>
                 </div>
-            </div>
+                <!-- <div class="quick-card1" data-section="videos">
+                    <div class="quick-icon1 videos">
+                        <i class="ph-bold ph-video"></i>
+                    </div>
+                    <h3>Vídeos</h3>
+                    <p>Tutoriais em vídeo</p>
+                </div> -->
+            </section>
 
-            <!-- Tutoriais Interativos -->
-            <div class="tutorials-section">
-                <div class="section-header">
-                    <svg width="20" height="20" fill="#2563eb" viewBox="0 0 20 20" style="margin-right: 8px;">
-                        <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
-                    </svg>
-                    <h2>Tutoriais Interativos</h2>
+            <!-- Tutorials Section -->
+            <section id="tutorials-section" class="help-section1">
+                <div class="section-header1">
+                    <h3><i class="ph-bold ph-graduation-cap"></i>Tutoriais Interativos</h3>
+                    <p>Aprenda a usar o sistema com nossos guias passo a passo</p>
                 </div>
-                <p class="section-subtitle">Aprenda a usar o sistema com nossos guias passo a passo</p>
 
-                <div class="tutorial-cards">
-                    <div class="tutorial-card">
-                        <div class="tutorial-badge">INICIANTE</div>
-                        <div class="tutorial-icon blue">
-                            <svg width="32" height="32" fill="white" viewBox="0 0 20 20">
-                                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
-                            </svg>
+                <div class="tutorials-grid1">
+                    <div class="tutorial-card1" data-tutorial1="getting-started">
+                        <div class="tutorial-header1">
+                            <div class="tutorial-icon1">
+                                <i class="ph-bold ph-rocket-launch"></i>
+                            </div>
+                            <span class="tutorial-badge1 beginner">Iniciante</span>
                         </div>
-                        <h3>Primeiros Passos</h3>
+                        <h4>Primeiros Passos</h4>
                         <p>Configure sua conta e comece a usar o MEI Gestão</p>
-                        <div class="tutorial-meta">
-                            <span class="tutorial-time">
-                                <svg width="16" height="16" fill="#6b7280" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                </svg>
-                                5 min
-                            </span>
-                            <span class="tutorial-steps">
-                                <svg width="16" height="16" fill="#6b7280" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
-                                </svg>
-                                4 passos
-                            </span>
+                        <div class="tutorial-meta1">
+                            <span><i class="ph-bold ph-clock"></i> 5 min</span>
+                            <span><i class="ph-bold ph-list-numbers"></i> 4 passos</span>
                         </div>
-                        <button class="tutorial-btn">Iniciar Tutorial</button>
+                        <button class="btn-tutorial1">Iniciar Tutorial</button>
                     </div>
 
-                    <div class="tutorial-card">
-                        <div class="tutorial-badge">INICIANTE</div>
-                        <div class="tutorial-icon blue">
-                            <svg width="32" height="32" fill="white" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
-                            </svg>
+                    <div class="tutorial-card1" data-tutorial1="add-income">
+                        <div class="tutorial-header1">
+                            <div class="tutorial-icon1">
+                                <i class="ph-bold ph-trend-up"></i>
+                            </div>
+                            <span class="tutorial-badge1 beginner">Iniciante</span>
                         </div>
-                        <h3>Adicionar Receitas</h3>
+                        <h4>Adicionar Receitas</h4>
                         <p>Aprenda a registrar suas receitas e vendas</p>
-                        <div class="tutorial-meta">
-                            <span class="tutorial-time">
-                                <svg width="16" height="16" fill="#6b7280" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                </svg>
-                                3 min
-                            </span>
-                            <span class="tutorial-steps">
-                                <svg width="16" height="16" fill="#6b7280" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
-                                </svg>
-                                3 passos
-                            </span>
+                        <div class="tutorial-meta1">
+                            <span><i class="ph-bold ph-clock"></i> 3 min</span>
+                            <span><i class="ph-bold ph-list-numbers"></i> 3 passos</span>
                         </div>
-                        <button class="tutorial-btn">Iniciar Tutorial</button>
+                        <button class="btn-tutorial1">Iniciar Tutorial</button>
                     </div>
 
-                    <div class="tutorial-card">
-                        <div class="tutorial-badge">INICIANTE</div>
-                        <div class="tutorial-icon blue">
-                            <svg width="32" height="32" fill="white" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                            </svg>
+                    <div class="tutorial-card1" data-tutorial1="add-expense">
+                        <div class="tutorial-header1">
+                            <div class="tutorial-icon1">
+                                <i class="ph-bold ph-trend-down"></i>
+                            </div>
+                            <span class="tutorial-badge1 beginner">Iniciante</span>
                         </div>
-                        <h3>Registrar Despesas</h3>
+                        <h4>Registrar Despesas</h4>
                         <p>Controle seus gastos e despesas do negócio</p>
-                        <div class="tutorial-meta">
-                            <span class="tutorial-time">
-                                <svg width="16" height="16" fill="#6b7280" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                </svg>
-                                3 min
-                            </span>
-                            <span class="tutorial-steps">
-                                <svg width="16" height="16" fill="#6b7280" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
-                                </svg>
-                                3 passos
-                            </span>
+                        <div class="tutorial-meta1">
+                            <span><i class="ph-bold ph-clock"></i> 3 min</span>
+                            <span><i class="ph-bold ph-list-numbers"></i> 3 passos</span>
                         </div>
-                        <button class="tutorial-btn">Iniciar Tutorial</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mais Tutoriais -->
-            <div class="tutorial-cards" style="margin-top: 48px;">
-                <div class="tutorial-card">
-                    <div class="tutorial-badge intermediate">INTERMEDIÁRIO</div>
-                    <div class="tutorial-icon blue">
-                        <svg width="32" height="32" fill="white" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                    <h3>Gerar Relatórios</h3>
-                    <p>Visualize e analise seus dados financeiros</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-time">
-                            <svg width="16" height="16" fill="#6b7280" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                            </svg>
-                            7 min
-                        </span>
-                        <span class="tutorial-steps">
-                            <svg width="16" height="16" fill="#6b7280" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
-                            </svg>
-                            5 passos
-                        </span>
-                    </div>
-                    <button class="tutorial-btn">Iniciar Tutorial</button>
-                </div>
-
-                <div class="tutorial-card">
-                    <div class="tutorial-badge intermediate">INTERMEDIÁRIO</div>
-                    <div class="tutorial-icon blue">
-                        <svg width="32" height="32" fill="white" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                    <h3>Usar Filtros</h3>
-                    <p>Filtre e organize suas transações</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-time">
-                            <svg width="16" height="16" fill="#6b7280" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                            </svg>
-                            4 min
-                        </span>
-                        <span class="tutorial-steps">
-                            <svg width="16" height="16" fill="#6b7280" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
-                            </svg>
-                            3 passos
-                        </span>
-                    </div>
-                    <button class="tutorial-btn">Iniciar Tutorial</button>
-                </div>
-
-                <div class="tutorial-card">
-                    <div class="tutorial-badge advanced">AVANÇADO</div>
-                    <div class="tutorial-icon blue">
-                        <svg width="32" height="32" fill="white" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                        </svg>
-                    </div>
-                    <h3>Exportar Dados</h3>
-                    <p>Exporte relatórios em PDF e Excel</p>
-                    <div class="tutorial-meta">
-                        <span class="tutorial-time">
-                            <svg width="16" height="16" fill="#6b7280" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                            </svg>
-                            5 min
-                        </span>
-                        <span class="tutorial-steps">
-                            <svg width="16" height="16" fill="#6b7280" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
-                            </svg>
-                            4 passos
-                        </span>
-                    </div>
-                    <button class="tutorial-btn">Iniciar Tutorial</button>
-                </div>
-            </div>
-
-            <!-- Perguntas Frequentes -->
-            <div class="faq-section">
-                <div class="section-header">
-                    <svg width="20" height="20" fill="#2563eb" viewBox="0 0 20 20" style="margin-right: 8px;">
-                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
-                    </svg>
-                    <h2>Perguntas Frequentes</h2>
-                </div>
-                <p class="section-subtitle">Respostas para as dúvidas mais comuns</p>
-
-                <!-- FAQ Filters -->
-                <div class="faq-filters">
-                    <button class="faq-filter-btn active" data-filter="all">Todas</button>
-                    <button class="faq-filter-btn" data-filter="conta">Conta</button>
-                    <button class="faq-filter-btn" data-filter="transacoes">Transações</button>
-                    <button class="faq-filter-btn" data-filter="relatorios">Relatórios</button>
-                    <button class="faq-filter-btn" data-filter="cobranca">Cobrança</button>
-                </div>
-
-                <!-- FAQ List -->
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Como faço para criar uma conta?</span>
-                            <svg width="20" height="20" fill="#6b7280" viewBox="0 0 20 20" class="faq-arrow">
-                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Para criar uma conta, clique no botão "Criar Conta" na página inicial e preencha os dados solicitados. Você receberá um email de confirmação para ativar sua conta.</p>
-                        </div>
+                        <button class="btn-tutorial1">Iniciar Tutorial</button>
                     </div>
 
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Como recupero minha senha?</span>
-                            <svg width="20" height="20" fill="#6b7280" viewBox="0 0 20 20" class="faq-arrow">
-                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Na tela de login, clique em "Esqueci minha senha" e informe seu email cadastrado. Você receberá um link para redefinir sua senha.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Posso alterar meus dados cadastrais?</span>
-                            <svg width="20" height="20" fill="#6b7280" viewBox="0 0 20 20" class="faq-arrow">
-                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Sim, você pode alterar seus dados cadastrais acessando o menu "Configurações" no canto superior direito e selecionando "Meus Dados".</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span>Como adiciono uma nova receita?</span>
-                            <svg width="20" height="20" fill="#6b7280" viewBox="0 0 20 20" class="faq-arrow">
-                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                        </div>
-                        <div class="faq-answer">
-                            <p>No Dashboard, clique no botão "Novo Lançamento" e selecione "Nova Receita". Preencha os campos do formulário e clique em "Salvar Receita".</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Fale com o Suporte -->
-            <div class="support-section">
-                <div class="section-header">
-                    <svg width="20" height="20" fill="#2563eb" viewBox="0 0 20 20" style="margin-right: 8px;">
-                        <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5zM15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"/>
-                    </svg>
-                    <h2>Fale com o Suporte</h2>
-                </div>
-                <p class="section-subtitle">Não encontrou o que procurava? Envie sua dúvida ou feedback</p>
-
-                <div class="support-content">
-                    <!-- Informações de Contato -->
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg width="20" height="20" fill="#2563eb" viewBox="0 0 20 20">
-                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                                </svg>
+                    <div class="tutorial-card1" data-tutorial1="reports">
+                        <div class="tutorial-header1">
+                            <div class="tutorial-icon1">
+                                <i class="ph-bold ph-chart-line"></i>
                             </div>
+                            <span class="tutorial-badge1 intermediate">Intermediário</span>
+                        </div>
+                        <h4>Gerar Relatórios</h4>
+                        <p>Visualize e analise seus dados financeiros</p>
+                        <div class="tutorial-meta1">
+                            <span><i class="ph-bold ph-clock"></i> 7 min</span>
+                            <span><i class="ph-bold ph-list-numbers"></i> 5 passos</span>
+                        </div>
+                        <button class="btn-tutorial1">Iniciar Tutorial</button>
+                    </div>
+
+                    <div class="tutorial-card1" data-tutorial1="filters">
+                        <div class="tutorial-header1">
+                            <div class="tutorial-icon1">
+                                <i class="ph-bold ph-funnel"></i>
+                            </div>
+                            <span class="tutorial-badge1 intermediate">Intermediário</span>
+                        </div>
+                        <h4>Usar Filtros</h4>
+                        <p>Filtre e organize suas transações</p>
+                        <div class="tutorial-meta1">
+                            <span><i class="ph-bold ph-clock"></i> 4 min</span>
+                            <span><i class="ph-bold ph-list-numbers"></i> 3 passos</span>
+                        </div>
+                        <button class="btn-tutorial1">Iniciar Tutorial</button>
+                    </div>
+
+                    <div class="tutorial-card1" data-tutorial1="export">
+                        <div class="tutorial-header1">
+                            <div class="tutorial-icon1">
+                                <i class="ph-bold ph-download"></i>
+                            </div>
+                            <span class="tutorial-badge1 advanced">Avançado</span>
+                        </div>
+                        <h4>Exportar Dados</h4>
+                        <p>Exporte relatórios em PDF e Excel</p>
+                        <div class="tutorial-meta1">
+                            <span><i class="ph-bold ph-clock"></i> 5 min</span>
+                            <span><i class="ph-bold ph-list-numbers"></i> 4 passos</span>
+                        </div>
+                        <button class="btn-tutorial1">Iniciar Tutorial</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section id="faq-section" class="help-section1">
+                <div class="section-header1">
+                    <h3><i class="ph-bold ph-question"></i>Perguntas Frequentes</h3>
+                    <p>Respostas para as dúvidas mais comuns</p>
+                </div>
+
+                <div class="faq-categories1">
+                    <button class="faq-category-btn1 active" data-category="all">Todas</button>
+                    <button class="faq-category-btn1" data-category="account">Conta</button>
+                    <button class="faq-category-btn1" data-category="transactions">Transações</button>
+                    <button class="faq-category-btn1" data-category="reports">Relatórios</button>
+                    <button class="faq-category-btn1" data-category="billing">Cobrança</button>
+                </div>
+
+                <div class="faq-list1">
+                    <div class="faq-item1" data-category="account">
+                        <div class="faq-question1">
+                            <h4>Como faço para criar uma conta?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Para criar uma conta no MEI Gestão, clique no botão "Cadastre-se" na página de login.
+                                Preencha seus dados pessoais (nome, e-mail, CPF e telefone) e os dados do seu negócio
+                                (nome da empresa, CNPJ e atividade principal). Após aceitar os termos de uso, clique em
+                                "Criar Conta" e você será redirecionado para o dashboard.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="account">
+                        <div class="faq-question1">
+                            <h4>Como recupero minha senha?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Na página de login, clique em "Esqueceu a senha?". Digite seu e-mail cadastrado e clique
+                                em "Enviar Instruções". Você receberá um e-mail com um link para redefinir sua senha. O
+                                link é válido por 24 horas.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="account">
+                        <div class="faq-question1">
+                            <h4>Posso alterar meus dados cadastrais?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Sim! Acesse o menu de configurações (ícone de engrenagem no canto superior direito) e
+                                selecione "Meu Perfil". Lá você pode editar seus dados pessoais e informações do
+                                negócio. Lembre-se de salvar as alterações antes de sair.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="transactions">
+                        <div class="faq-question1">
+                            <h4>Como adiciono uma nova receita?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>No dashboard, clique no botão "Novo Lançamento" e selecione "Nova Receita". Preencha o
+                                nome, valor, data e descrição (opcional). Você também pode anexar um comprovante. Clique
+                                em "Salvar Receita" para concluir.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="transactions">
+                        <div class="faq-question1">
+                            <h4>Posso editar ou excluir uma transação?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Sim! Na lista de transações, clique no ícone de três pontos ao lado da transação que
+                                deseja editar ou excluir. Selecione "Editar" para modificar os dados ou "Excluir" para
+                                remover a transação. Atenção: a exclusão é permanente.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="transactions">
+                        <div class="faq-question1">
+                            <h4>Como anexo comprovantes às transações?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Ao criar ou editar uma transação, você verá uma área de upload de arquivo. Clique nela e
+                                selecione o comprovante (PDF, imagem ou documento). O arquivo será armazenado de forma
+                                segura e poderá ser visualizado a qualquer momento.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="reports">
+                        <div class="faq-question1">
+                            <h4>Como gero um relatório financeiro?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Acesse a página "Relatórios" no menu lateral. Selecione o período desejado usando os
+                                filtros de data. O sistema gerará automaticamente gráficos e tabelas com suas receitas,
+                                despesas e saldo. Você pode exportar o relatório em PDF ou Excel.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="reports">
+                        <div class="faq-question1">
+                            <h4>Posso filtrar relatórios por período?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Sim! Na página de relatórios, use os filtros de "Data Inicial" e "Data Final" para
+                                selecionar o período desejado. Você também pode usar filtros rápidos como "Este Mês",
+                                "Últimos 3 Meses" ou "Este Ano".</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="billing">
+                        <div class="faq-question1">
+                            <h4>O MEI Gestão é gratuito?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Oferecemos um plano gratuito com funcionalidades básicas. Para recursos avançados como
+                                relatórios personalizados, exportação ilimitada e suporte prioritário, temos planos
+                                pagos a partir de R$ 29,90/mês.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="billing">
+                        <div class="faq-question1">
+                            <h4>Como faço upgrade do meu plano?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Acesse "Configurações" > "Planos e Assinatura". Escolha o plano desejado e clique em
+                                "Fazer Upgrade". Você será direcionado para a página de pagamento seguro. Aceitamos
+                                cartão de crédito, débito e PIX.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Support Form Section -->
+            <section id="support-section" class="help-section1">
+                <div class="section-header1">
+                    <h3><i class="ph-bold ph-headset"></i>Fale com o Suporte</h3>
+                    <p>Não encontrou o que procurava? Envie sua dúvida ou feedback</p>
+                </div>
+
+                <div class="support-container1">
+                    <div class="support-info1">
+                        <div class="info-card1">
+                            <i class="ph-bold ph-envelope"></i>
                             <div>
-                                <div class="contact-label">E-mail</div>
-                                <div class="contact-value">suporte@meigestao.com.br</div>
+                                <h4>E-mail</h4>
+                                <p>suporte@meigestao.com.br</p>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg width="20" height="20" fill="#2563eb" viewBox="0 0 20 20">
-                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
-                                </svg>
-                            </div>
+                        <div class="info-card1">
+                            <i class="ph-bold ph-phone"></i>
                             <div>
-                                <div class="contact-label">Telefone</div>
-                                <div class="contact-value">(11) 4002-8922</div>
+                                <h4>Telefone</h4>
+                                <p>(11) 4002-8922</p>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg width="20" height="20" fill="#2563eb" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                </svg>
-                            </div>
+                        <div class="info-card1">
+                            <i class="ph-bold ph-clock"></i>
                             <div>
-                                <div class="contact-label">Horário de Atendimento</div>
-                                <div class="contact-value">Seg - Sex: 9h às 18h</div>
+                                <h4>Horário de Atendimento</h4>
+                                <p>Seg - Sex: 9h às 18h</p>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg width="20" height="20" fill="#2563eb" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/>
-                                </svg>
-                            </div>
+                        <div class="info-card1">
+                            <i class="ph-bold ph-chat-circle-dots"></i>
                             <div>
-                                <div class="contact-label">Tempo de Resposta</div>
-                                <div class="contact-value">Até 24 horas úteis</div>
+                                <h4>Tempo de Resposta</h4>
+                                <p>Até 24 horas úteis</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Formulário de Contato -->
-                    <div class="support-form-wrapper">
-                        <form class="support-form" id="supportForm">
+                    <div class="support-form1-container1">
+                        <form id="support-form1" class="support-form1">
+                            <div class="form-group">
+                                <label for="support-name">Nome Completo</label>
+                                <input type="text" id="support-name" name="name" placeholder="Seu nome" required>
+                            </div>
+
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="supportEmail">E-mail</label>
-                                    <input type="email" id="supportEmail" name="email" placeholder="seu@email.com" required>
+                                    <label for="support-email">E-mail</label>
+                                    <input type="email" id="support-email" name="email" placeholder="seu@email.com"
+                                        required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="supportPhone">Telefone (opcional)</label>
-                                    <input type="tel" id="supportPhone" name="phone" placeholder="(00) 00000-0000">
+                                    <label for="support-phone1">Telefone (opcional)</label>
+                                    <input type="tel" id="support-phone1" name="phone" placeholder="(00) 00000-0000">
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <label for="supportType">Tipo de Solicitação</label>
-                                <select id="supportType" name="type" required>
+                                <label for="support-type">Tipo de Solicitação</label>
+                                <select id="support-type" name="type" required>
                                     <option value="">Selecione uma opção</option>
-                                    <option value="duvida">Dúvida</option>
-                                    <option value="problema">Problema Técnico</option>
-                                    <option value="sugestao">Sugestão</option>
-                                    <option value="outro">Outro</option>
+                                    <option value="question">Dúvida</option>
+                                    <option value="bug">Reportar Problema</option>
+                                    <option value="feedback">Feedback</option>
+                                    <option value="feature">Sugestão de Funcionalidade</option>
+                                    <option value="other">Outro</option>
                                 </select>
                             </div>
+
                             <div class="form-group">
-                                <label for="supportSubject">Assunto</label>
-                                <input type="text" id="supportSubject" name="subject" placeholder="Resumo da sua solicitação" required>
+                                <label for="support-subject">Assunto</label>
+                                <input type="text" id="support-subject" name="subject"
+                                    placeholder="Resumo da sua solicitação" required>
                             </div>
+
                             <div class="form-group">
-                                <label for="supportMessage">Mensagem</label>
-                                <textarea id="supportMessage" name="message" rows="6" placeholder="Descreva sua dúvida, problema ou sugestão em detalhes..." maxlength="1000" required></textarea>
-                                <div class="char-count">
-                                    <span id="charCount">0</span>/1000 caracteres
+                                <label for="support-message">Mensagem</label>
+                                <textarea id="support-message" name="message" rows="6"
+                                    placeholder="Descreva sua dúvida, problema ou sugestão em detalhes..."
+                                    required></textarea>
+                                <span class="char-count1">0 / 1000 caracteres</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="support-attachment">Anexar Arquivo (opcional)</label>
+                                <div class="file-upload-area1">
+                                    <i class="ph-regular ph-upload"></i>
+                                    <span>Clique para selecionar ou arraste um arquivo</span>
+                                    <small>PDF, PNG, JPG até 5MB</small>
                                 </div>
+                                <input type="file" id="support-attachment" name="attachment"
+                                    accept=".pdf,.png,.jpg,.jpeg" hidden>
                             </div>
-                            <div class="form-group">
-                                <label>Anexar Arquivo (opcional)</label>
-                                <div class="file-upload-area" id="supportFileUploadArea">
-                                    <input type="file" id="supportFile" name="file" style="display: none;" accept=".pdf,.png,.jpg,.jpeg">
-                                    <div class="file-upload-content">
-                                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 011-1h1a1 1 0 100-2H8z" clip-rule="evenodd"/>
-                                        </svg>
-                                        <span>Clique para selecionar ou arraste um arquivo</span>
-                                        <p class="file-info">PDF, PNG, JPG até 5MB</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-actions">
-                                <button type="button" class="btn-clear" id="clearSupportFormBtn">Limpar</button>
-                                <button type="submit" class="btn-submit">
-                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style="margin-right: 8px;">
-                                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
-                                    </svg>
+
+                            <div class="form-actions1">
+                                <button type="reset" class="btn-cancel1">Limpar</button>
+                                <button type="submit" class="btn-submit1">
                                     Enviar Solicitação
+                                    <i class="ph-bold ph-paper-plane-tilt"></i>
                                 </button>
                             </div>
                         </form>
+
+                        <div id="success-message" class="success-message-box1">
+                            <i class="ph-fill ph-check-circle"></i>
+                            <h4>Mensagem enviada com sucesso!</h4>
+                            <p>Nossa equipe receberá sua solicitação e responderá em até 24 horas úteis.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
 
         <!-- Relatórios Content -->
@@ -629,7 +735,9 @@
                 </div>
                 <button class="back-btn" id="backToDashboardFromRelatoriosBtn">
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style="margin-right: 8px;">
-                        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd"
+                            d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+                            clip-rule="evenodd" />
                     </svg>
                     Voltar ao Dashboard
                 </button>
@@ -654,7 +762,9 @@
                             <label for="operationFilter">Tipo de Operação</label>
                             <div class="select-wrapper has-filter-icon">
                                 <svg width="16" height="16" fill="#6b7280" viewBox="0 0 20 20" class="filter-icon">
-                                    <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd"/>
+                                    <path fill-rule="evenodd"
+                                        d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
+                                        clip-rule="evenodd" />
                                 </svg>
                                 <select id="operationFilter" class="filter-select filter-select-with-icon">
                                     <option value="all">Todas</option>
@@ -664,8 +774,11 @@
                             </div>
                         </div>
                         <button class="apply-filters-btn">
-                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20" style="margin-right: 8px;">
-                                <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd"/>
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"
+                                style="margin-right: 8px;">
+                                <path fill-rule="evenodd"
+                                    d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
+                                    clip-rule="evenodd" />
                             </svg>
                             Aplicar Filtros
                         </button>
@@ -675,14 +788,20 @@
                     <h3 class="export-title">Exportar Relatório</h3>
                     <div class="export-buttons">
                         <button class="export-btn">
-                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20" style="margin-right: 10px;">
-                                <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd"/>
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"
+                                style="margin-right: 10px;">
+                                <path fill-rule="evenodd"
+                                    d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z"
+                                    clip-rule="evenodd" />
                             </svg>
                             Exportar PDF
                         </button>
                         <button class="export-btn">
-                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20" style="margin-right: 10px;">
-                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 20 20"
+                                style="margin-right: 10px;">
+                                <path fill-rule="evenodd"
+                                    d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
                             </svg>
                             Exportar planilha
                         </button>
@@ -696,7 +815,9 @@
                     <div class="metric-header">
                         <span class="metric-title">Total de Receitas</span>
                         <svg width="20" height="20" fill="#10b981" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd"
+                                d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd" />
                         </svg>
                     </div>
                     <div class="metric-value" id="totalReceitasReport">R$ 0,00</div>
@@ -708,7 +829,9 @@
                     <div class="metric-header">
                         <span class="metric-title">Total de Despesas</span>
                         <svg width="20" height="20" fill="#ef4444" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd"
+                                d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z"
+                                clip-rule="evenodd" />
                         </svg>
                     </div>
                     <div class="metric-value" id="totalDespesasReport">R$ 0,00</div>
@@ -720,7 +843,9 @@
                     <div class="metric-header">
                         <span class="metric-title">Lucro Líquido</span>
                         <svg width="20" height="20" fill="#2563eb" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd"
+                                d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
+                                clip-rule="evenodd" />
                         </svg>
                     </div>
                     <div class="metric-value" id="lucroLiquidoReport">R$ 0,00</div>
@@ -732,7 +857,9 @@
                     <div class="metric-header">
                         <span class="metric-title">Margem de Lucro</span>
                         <svg width="20" height="20" fill="#2563eb" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd"
+                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                clip-rule="evenodd" />
                         </svg>
                     </div>
                     <div class="metric-value" id="margemLucroReport">0,0%</div>
@@ -783,7 +910,9 @@
                 <h2 class="modal-title">Qual tipo de lançamento você gostaria de fazer?</h2>
                 <button class="modal-close" id="closeModalBtn">
                     <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
                     </svg>
                 </button>
             </div>
@@ -801,7 +930,9 @@
                 <h2 class="modal-title">Nova Receita</h2>
                 <button class="modal-close" id="closeIncomeModalBtn">
                     <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
                     </svg>
                 </button>
             </div>
@@ -830,7 +961,9 @@
                         <input type="file" id="incomeFile" name="file" style="display: none;">
                         <div class="file-upload-content">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 011-1h1a1 1 0 100-2H8z" clip-rule="evenodd"/>
+                                <path fill-rule="evenodd"
+                                    d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 011-1h1a1 1 0 100-2H8z"
+                                    clip-rule="evenodd" />
                             </svg>
                             <span>Clique para selecionar um arquivo</span>
                         </div>
@@ -851,7 +984,9 @@
                 <h2 class="modal-title">Nova Despesa</h2>
                 <button class="modal-close" id="closeExpenseModalBtn">
                     <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
                     </svg>
                 </button>
             </div>
@@ -880,7 +1015,9 @@
                         <input type="file" id="expenseFile" name="file" style="display: none;">
                         <div class="file-upload-content">
                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 011-1h1a1 1 0 100-2H8z" clip-rule="evenodd"/>
+                                <path fill-rule="evenodd"
+                                    d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 011-1h1a1 1 0 100-2H8z"
+                                    clip-rule="evenodd" />
                             </svg>
                             <span>Clique para selecionar um arquivo</span>
                         </div>
@@ -901,7 +1038,9 @@
                 <h2 class="modal-title">Gerar DAS</h2>
                 <button class="modal-close" id="closeDasModalBtn">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
                     </svg>
                 </button>
             </div>
@@ -909,9 +1048,12 @@
                 <div class="form-group">
                     <label for="mesAnoReferencia">Mês/Ano de Referência</label>
                     <div class="input-with-icon">
-                        <input type="text" id="mesAnoReferencia" name="mesAnoReferencia" placeholder="dezembro de 2025" value="dezembro de 2025">
+                        <input type="text" id="mesAnoReferencia" name="mesAnoReferencia" placeholder="dezembro de 2025"
+                            value="dezembro de 2025">
                         <svg class="calendar-icon" width="20" height="20" fill="#6b7280" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd"
+                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                clip-rule="evenodd" />
                         </svg>
                     </div>
                 </div>
@@ -927,9 +1069,52 @@
         </div>
     </div>
 
+    <!-- Tutorial Modal -->
+    <div id="tutorial-modal1" class="modal-overlay1 hidden">
+        <div class="tutorial-modal1">
+            <div class="tutorial-modal1-header">
+                <h3 id="tutorial-title1">Tutorial</h3>
+                <button class="close-tutorial1"><i class="ph-bold ph-x"></i></button>
+            </div>
+            <div class="tutorial-modal1-body">
+                <div class="tutorial-progress1">
+                    <div class="progress-bar1">
+                        <div class="progress-fill1"></div>
+                    </div>
+                    <span class="progress-text1">Passo <span id="current-step1">1</span> de <span
+                            id="total-steps1">4</span></span>
+                </div>
+                <div class="tutorial-content1">
+                    <div class="tutorial-step1 active" data-step="1">
+                        <div class="step-icon1">
+                            <i class="ph-bold ph-number-circle-one"></i>
+                        </div>
+                        <h4 id="step-title1">Título do Passo</h4>
+                        <p id="step-description1">Descrição do passo</p>
+                        <div class="step-image1">
+                            <i class="ph-thin ph-image"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tutorial-modal1-footer">
+                <button class="btn-prev1" disabled>
+                    <i class="ph-bold ph-caret-left"></i>
+                    Anterior
+                </button>
+                <button class="btn-next1">
+                    Próximo
+                    <i class="ph-bold ph-caret-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
     <script src="script.js"></script>
+    <script src="ajuda.js"></script>
 </body>
+
 </html>

@@ -693,6 +693,120 @@ body.modal-open {
     color: #6b7280;
 }
 
+/* Revenues Filters */
+.revenues-filters {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    margin-bottom: 24px;
+    padding: 20px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.revenues-filters .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.revenues-filters .filter-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.revenues-filters .filter-input {
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+    background-color: white;
+    color: #1f2937;
+}
+
+.revenues-filters .filter-input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.revenues-filters .select-wrapper {
+    position: relative;
+}
+
+.revenues-filters .filter-select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    background-color: white;
+    color: #1f2937;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 20px;
+    padding-right: 36px;
+}
+
+.revenues-filters .filter-select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.revenues-filters .filter-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.revenues-filters .filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.revenues-filters .filter-btn.apply {
+    background-color: #2563eb;
+    color: white;
+}
+
+.revenues-filters .filter-btn.apply:hover {
+    background-color: #1e40af;
+}
+
+.revenues-filters .filter-btn.clear {
+    background-color: white;
+    color: #6b7280;
+    border: 1px solid #d1d5db;
+}
+
+.revenues-filters .filter-btn.clear:hover {
+    background-color: #f9fafb;
+    border-color: #9ca3af;
+    color: #374151;
+}
+
+.revenues-filters .filter-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
 /* Revenues Table */
 .revenues-table {
     display: flex;
@@ -955,7 +1069,7 @@ body.modal-open {
     margin-bottom: 8px;
 }
 
-.tutorial-card > p {
+.tutorial-card>p {
     font-size: 14px;
     color: #6b7280;
     margin-bottom: 16px;
@@ -1491,7 +1605,7 @@ body.modal-open {
     margin-bottom: 4px;
 }
 
-.chart-placeholder > p {
+.chart-placeholder>p {
     font-size: 14px;
     color: #6b7280;
     margin-bottom: 20px;
@@ -1563,4 +1677,3 @@ body.modal-open {
         grid-template-columns: 1fr;
     }
 }
-

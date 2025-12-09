@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEI Gestão - Ajuda e Suporte</title>
+    <meta name="description"
+        content="Central de ajuda e suporte do MEI Gestão - Tutoriais, FAQ e formulário de contato">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ajuda.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>MEI Gestão</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item"><span>Dashboard</span><i class="ph-bold ph-caret-right"></i></a>
+                <a href="receitas.html" class="nav-item"><span>Receitas</span><i class="ph-bold ph-caret-down"></i></a>
+                <a href="#" class="nav-item"><span>Despesas</span><i class="ph-bold ph-caret-down"></i></a>
+                <a href="relatorios.html" class="nav-item"><span>Relatórios</span><i
+                        class="ph-bold ph-caret-down"></i></a>
+                <a href="ajuda.html" class="nav-item active"><span>Ajuda</span><i
+                        class="ph-bold ph-caret-right"></i></a>
+            </nav>
+            <div class="sidebar-footer"><button class="logout-btn">Sair</button></div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div>
+                    <h2>Central de Ajuda</h2>
+                    <p>Encontre respostas, tutoriais e suporte para usar o MEI Gestão</p>
+                </div>
+            </header>
+
+            <!-- Search Bar -->
+            <section class="search-section1">
+                <div class="search-container1">
+                    <i class="ph-bold ph-magnifying-glass"></i>
+                    <input type="text" id="help-search" placeholder="Buscar por tutoriais, perguntas ou tópicos...">
+                </div>
+            </section>
+
+            <!-- Quick Access Cards -->
+            <section class="quick-access1">
+                <div class="quick-card1" data-section="tutorials">
+                    <div class="quick-icon1 tutorials">
+                        <i class="ph-bold ph-graduation-cap"></i>
+                    </div>
+                    <h3>Tutoriais</h3>
+                    <p>Guias passo a passo</p>
+                </div>
+                <div class="quick-card1" data-section="faq">
+                    <div class="quick-icon1 faq">
+                        <i class="ph-bold ph-question"></i>
+                    </div>
+                    <h3>FAQ</h3>
+                    <p>Perguntas frequentes</p>
+                </div>
+                <div class="quick-card1" data-section="support">
+                    <div class="quick-icon1 support">
+                        <i class="ph-bold ph-headset"></i>
+                    </div>
+                    <h3>Suporte</h3>
+                    <p>Fale conosco</p>
+                </div>
+                <!-- <div class="quick-card1" data-section="videos">
+                    <div class="quick-icon1 videos">
+                        <i class="ph-bold ph-video"></i>
+                    </div>
+                    <h3>Vídeos</h3>
+                    <p>Tutoriais em vídeo</p>
+                </div> -->
+            </section>
+
+            <!-- Tutorials Section -->
+            <section id="tutorials-section" class="help-section1">
+                <div class="section-header1">
+                    <h3><i class="ph-bold ph-graduation-cap"></i>Tutoriais Interativos</h3>
+                    <p>Aprenda a usar o sistema com nossos guias passo a passo</p>
+                </div>
+
+                <div class="tutorials-grid1">
+                    <div class="tutorial-card1" data-tutorial="getting-started">
+                        <div class="tutorial-header1">
+                            <div class="tutorial-icon1">
+                                <i class="ph-bold ph-rocket-launch"></i>
+                            </div>
+                            <span class="tutorial-badge1 beginner">Iniciante</span>
+                        </div>
+                        <h4>Primeiros Passos</h4>
+                        <p>Configure sua conta e comece a usar o MEI Gestão</p>
+                        <div class="tutorial-meta1">
+                            <span><i class="ph-bold ph-clock"></i> 5 min</span>
+                            <span><i class="ph-bold ph-list-numbers"></i> 4 passos</span>
+                        </div>
+                        <button class="btn-tutorial1">Iniciar Tutorial</button>
+                    </div>
+
+                    <div class="tutorial-card1" data-tutorial="add-income">
+                        <div class="tutorial-header1">
+                            <div class="tutorial-icon1">
+                                <i class="ph-bold ph-trend-up"></i>
+                            </div>
+                            <span class="tutorial-badge1 beginner">Iniciante</span>
+                        </div>
+                        <h4>Adicionar Receitas</h4>
+                        <p>Aprenda a registrar suas receitas e vendas</p>
+                        <div class="tutorial-meta1">
+                            <span><i class="ph-bold ph-clock"></i> 3 min</span>
+                            <span><i class="ph-bold ph-list-numbers"></i> 3 passos</span>
+                        </div>
+                        <button class="btn-tutorial1">Iniciar Tutorial</button>
+                    </div>
+
+                    <div class="tutorial-card1" data-tutorial="add-expense">
+                        <div class="tutorial-header1">
+                            <div class="tutorial-icon1">
+                                <i class="ph-bold ph-trend-down"></i>
+                            </div>
+                            <span class="tutorial-badge1 beginner">Iniciante</span>
+                        </div>
+                        <h4>Registrar Despesas</h4>
+                        <p>Controle seus gastos e despesas do negócio</p>
+                        <div class="tutorial-meta1">
+                            <span><i class="ph-bold ph-clock"></i> 3 min</span>
+                            <span><i class="ph-bold ph-list-numbers"></i> 3 passos</span>
+                        </div>
+                        <button class="btn-tutorial1">Iniciar Tutorial</button>
+                    </div>
+
+                    <div class="tutorial-card1" data-tutorial="reports">
+                        <div class="tutorial-header1">
+                            <div class="tutorial-icon1">
+                                <i class="ph-bold ph-chart-line"></i>
+                            </div>
+                            <span class="tutorial-badge1 intermediate">Intermediário</span>
+                        </div>
+                        <h4>Gerar Relatórios</h4>
+                        <p>Visualize e analise seus dados financeiros</p>
+                        <div class="tutorial-meta1">
+                            <span><i class="ph-bold ph-clock"></i> 7 min</span>
+                            <span><i class="ph-bold ph-list-numbers"></i> 5 passos</span>
+                        </div>
+                        <button class="btn-tutorial1">Iniciar Tutorial</button>
+                    </div>
+
+                    <div class="tutorial-card1" data-tutorial="filters">
+                        <div class="tutorial-header1">
+                            <div class="tutorial-icon1">
+                                <i class="ph-bold ph-funnel"></i>
+                            </div>
+                            <span class="tutorial-badge1 intermediate">Intermediário</span>
+                        </div>
+                        <h4>Usar Filtros</h4>
+                        <p>Filtre e organize suas transações</p>
+                        <div class="tutorial-meta1">
+                            <span><i class="ph-bold ph-clock"></i> 4 min</span>
+                            <span><i class="ph-bold ph-list-numbers"></i> 3 passos</span>
+                        </div>
+                        <button class="btn-tutorial1">Iniciar Tutorial</button>
+                    </div>
+
+                    <div class="tutorial-card1" data-tutorial="export">
+                        <div class="tutorial-header1">
+                            <div class="tutorial-icon1">
+                                <i class="ph-bold ph-download"></i>
+                            </div>
+                            <span class="tutorial-badge1 advanced">Avançado</span>
+                        </div>
+                        <h4>Exportar Dados</h4>
+                        <p>Exporte relatórios em PDF e Excel</p>
+                        <div class="tutorial-meta1">
+                            <span><i class="ph-bold ph-clock"></i> 5 min</span>
+                            <span><i class="ph-bold ph-list-numbers"></i> 4 passos</span>
+                        </div>
+                        <button class="btn-tutorial1">Iniciar Tutorial</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section id="faq-section" class="help-section1">
+                <div class="section-header1">
+                    <h3><i class="ph-bold ph-question"></i>Perguntas Frequentes</h3>
+                    <p>Respostas para as dúvidas mais comuns</p>
+                </div>
+
+                <div class="faq-categories1">
+                    <button class="faq-category-btn1 active" data-category="all">Todas</button>
+                    <button class="faq-category-btn1" data-category="account">Conta</button>
+                    <button class="faq-category-btn1" data-category="transactions">Transações</button>
+                    <button class="faq-category-btn1" data-category="reports">Relatórios</button>
+                    <button class="faq-category-btn1" data-category="billing">Cobrança</button>
+                </div>
+
+                <div class="faq-list1">
+                    <div class="faq-item1" data-category="account">
+                        <div class="faq-question1">
+                            <h4>Como faço para criar uma conta?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Para criar uma conta no MEI Gestão, clique no botão "Cadastre-se" na página de login.
+                                Preencha seus dados pessoais (nome, e-mail, CPF e telefone) e os dados do seu negócio
+                                (nome da empresa, CNPJ e atividade principal). Após aceitar os termos de uso, clique em
+                                "Criar Conta" e você será redirecionado para o dashboard.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="account">
+                        <div class="faq-question1">
+                            <h4>Como recupero minha senha?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Na página de login, clique em "Esqueceu a senha?". Digite seu e-mail cadastrado e clique
+                                em "Enviar Instruções". Você receberá um e-mail com um link para redefinir sua senha. O
+                                link é válido por 24 horas.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="account">
+                        <div class="faq-question1">
+                            <h4>Posso alterar meus dados cadastrais?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Sim! Acesse o menu de configurações (ícone de engrenagem no canto superior direito) e
+                                selecione "Meu Perfil". Lá você pode editar seus dados pessoais e informações do
+                                negócio. Lembre-se de salvar as alterações antes de sair.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="transactions">
+                        <div class="faq-question1">
+                            <h4>Como adiciono uma nova receita?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>No dashboard, clique no botão "Novo Lançamento" e selecione "Nova Receita". Preencha o
+                                nome, valor, data e descrição (opcional). Você também pode anexar um comprovante. Clique
+                                em "Salvar Receita" para concluir.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="transactions">
+                        <div class="faq-question1">
+                            <h4>Posso editar ou excluir uma transação?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Sim! Na lista de transações, clique no ícone de três pontos ao lado da transação que
+                                deseja editar ou excluir. Selecione "Editar" para modificar os dados ou "Excluir" para
+                                remover a transação. Atenção: a exclusão é permanente.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="transactions">
+                        <div class="faq-question1">
+                            <h4>Como anexo comprovantes às transações?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Ao criar ou editar uma transação, você verá uma área de upload de arquivo. Clique nela e
+                                selecione o comprovante (PDF, imagem ou documento). O arquivo será armazenado de forma
+                                segura e poderá ser visualizado a qualquer momento.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="reports">
+                        <div class="faq-question1">
+                            <h4>Como gero um relatório financeiro?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Acesse a página "Relatórios" no menu lateral. Selecione o período desejado usando os
+                                filtros de data. O sistema gerará automaticamente gráficos e tabelas com suas receitas,
+                                despesas e saldo. Você pode exportar o relatório em PDF ou Excel.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="reports">
+                        <div class="faq-question1">
+                            <h4>Posso filtrar relatórios por período?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Sim! Na página de relatórios, use os filtros de "Data Inicial" e "Data Final" para
+                                selecionar o período desejado. Você também pode usar filtros rápidos como "Este Mês",
+                                "Últimos 3 Meses" ou "Este Ano".</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="billing">
+                        <div class="faq-question1">
+                            <h4>O MEI Gestão é gratuito?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Oferecemos um plano gratuito com funcionalidades básicas. Para recursos avançados como
+                                relatórios personalizados, exportação ilimitada e suporte prioritário, temos planos
+                                pagos a partir de R$ 29,90/mês.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item1" data-category="billing">
+                        <div class="faq-question1">
+                            <h4>Como faço upgrade do meu plano?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer1">
+                            <p>Acesse "Configurações" > "Planos e Assinatura". Escolha o plano desejado e clique em
+                                "Fazer Upgrade". Você será direcionado para a página de pagamento seguro. Aceitamos
+                                cartão de crédito, débito e PIX.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Support Form Section -->
+            <section id="support-section" class="help-section1">
+                <div class="section-header1">
+                    <h3><i class="ph-bold ph-headset"></i>Fale com o Suporte</h3>
+                    <p>Não encontrou o que procurava? Envie sua dúvida ou feedback</p>
+                </div>
+
+                <div class="support-container1">
+                    <div class="support-info1">
+                        <div class="info-card1">
+                            <i class="ph-bold ph-envelope"></i>
+                            <div>
+                                <h4>E-mail</h4>
+                                <p>suporte@meigestao.com.br</p>
+                            </div>
+                        </div>
+                        <div class="info-card1">
+                            <i class="ph-bold ph-phone"></i>
+                            <div>
+                                <h4>Telefone</h4>
+                                <p>(11) 4002-8922</p>
+                            </div>
+                        </div>
+                        <div class="info-card1">
+                            <i class="ph-bold ph-clock"></i>
+                            <div>
+                                <h4>Horário de Atendimento</h4>
+                                <p>Seg - Sex: 9h às 18h</p>
+                            </div>
+                        </div>
+                        <div class="info-card1">
+                            <i class="ph-bold ph-chat-circle-dots"></i>
+                            <div>
+                                <h4>Tempo de Resposta</h4>
+                                <p>Até 24 horas úteis</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="support-form1-container1">
+                        <form id="support-form1" class="support-form1">
+                            <div class="form-group">
+                                <label for="support-name">Nome Completo</label>
+                                <input type="text" id="support-name" name="name" placeholder="Seu nome" required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="support-email">E-mail</label>
+                                    <input type="email" id="support-email" name="email" placeholder="seu@email.com"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="support-phone">Telefone (opcional)</label>
+                                    <input type="tel" id="support-phone" name="phone" placeholder="(00) 00000-0000">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="support-type">Tipo de Solicitação</label>
+                                <select id="support-type" name="type" required>
+                                    <option value="">Selecione uma opção</option>
+                                    <option value="question">Dúvida</option>
+                                    <option value="bug">Reportar Problema</option>
+                                    <option value="feedback">Feedback</option>
+                                    <option value="feature">Sugestão de Funcionalidade</option>
+                                    <option value="other">Outro</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="support-subject">Assunto</label>
+                                <input type="text" id="support-subject" name="subject"
+                                    placeholder="Resumo da sua solicitação" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="support-message">Mensagem</label>
+                                <textarea id="support-message" name="message" rows="6"
+                                    placeholder="Descreva sua dúvida, problema ou sugestão em detalhes..."
+                                    required></textarea>
+                                <span class="char-count1">0 / 1000 caracteres</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="support-attachment">Anexar Arquivo (opcional)</label>
+                                <div class="file-upload-area1">
+                                    <i class="ph-regular ph-upload"></i>
+                                    <span>Clique para selecionar ou arraste um arquivo</span>
+                                    <small>PDF, PNG, JPG até 5MB</small>
+                                </div>
+                                <input type="file" id="support-attachment" name="attachment"
+                                    accept=".pdf,.png,.jpg,.jpeg" hidden>
+                            </div>
+
+                            <div class="form-actions1">
+                                <button type="reset" class="btn-cancel1">Limpar</button>
+                                <button type="submit" class="btn-submit1">
+                                    Enviar Solicitação
+                                    <i class="ph-bold ph-paper-plane-tilt"></i>
+                                </button>
+                            </div>
+                        </form>
+
+                        <div id="success-message" class="success-message-box1">
+                            <i class="ph-fill ph-check-circle"></i>
+                            <h4>Mensagem enviada com sucesso!</h4>
+                            <p>Nossa equipe receberá sua solicitação e responderá em até 24 horas úteis.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Tutorial Modal -->
+    <div id="tutorial-modal1" class="modal-overlay hidden">
+        <div class="tutorial-modal1">
+            <div class="tutorial-modal1-header">
+                <h3 id="tutorial-title">Tutorial</h3>
+                <button class="close-tutorial1"><i class="ph-bold ph-x"></i></button>
+            </div>
+            <div class="tutorial-modal1-body">
+                <div class="tutorial-progress1">
+                    <div class="progress-bar1">
+                        <div class="progress-fill1"></div>
+                    </div>
+                    <span class="progress-text1">Passo <span id="current-step">1</span> de <span
+                            id="total-steps">4</span></span>
+                </div>
+                <div class="tutorial-content1">
+                    <div class="tutorial-step1 active" data-step="1">
+                        <div class="step-icon1">
+                            <i class="ph-bold ph-number-circle-one"></i>
+                        </div>
+                        <h4 id="step-title">Título do Passo</h4>
+                        <p id="step-description">Descrição do passo</p>
+                        <div class="step-image1">
+                            <i class="ph-thin ph-image"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tutorial-modal1-footer">
+                <button class="btn-prev1" disabled>
+                    <i class="ph-bold ph-caret-left"></i>
+                    Anterior
+                </button>
+                <button class="btn-next1">
+                    Próximo
+                    <i class="ph-bold ph-caret-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="ajuda.js"></script>
+</body>
+
+</html>

@@ -119,7 +119,7 @@ function calculateTotals() {
 // Função para atualizar cards do Dashboard
 function updateDashboardCards() {
     const { totalReceitas, totalDespesas, saldoAtual } = calculateTotals();
-    
+
     totalReceitasEl.textContent = `R$ ${formatCurrency(totalReceitas)}`;
     totalDespesasEl.textContent = `R$ ${formatCurrency(totalDespesas)}`;
     saldoAtualEl.textContent = `R$ ${formatCurrency(saldoAtual)}`;
@@ -130,7 +130,7 @@ function renderRecentTransactions() {
     recentTransactionsList.innerHTML = '';
 
     let transactions = [];
-    
+
     if (currentTab === 'receitas') {
         // Pegar últimas 4 receitas
         transactions = receitasData
@@ -173,15 +173,15 @@ function renderRecentTransactions() {
     transactions.forEach(transaction => {
         const item = document.createElement('div');
         item.className = 'transaction-item';
-        
+
         const iconColor = transaction.type === 'income' ? '#10b981' : '#ef4444';
-        const iconPath = transaction.type === 'income' 
+        const iconPath = transaction.type === 'income'
             ? 'M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z'
             : 'M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z';
-        
+
         const amountClass = transaction.type === 'income' ? 'income' : 'expense';
         const amountSign = transaction.type === 'income' ? '+' : '-';
-        
+
         item.innerHTML = `
             <div class="transaction-icon ${transaction.type}">
                 <svg width="24" height="24" fill="${iconColor}" viewBox="0 0 20 20">
@@ -263,10 +263,18 @@ let receitasData = [
 let currentPageReceitas = 1;
 const itemsPerPageReceitas = 20;
 
-const getTotalPagesReceitas = () => Math.max(1, Math.ceil(receitasData.length / itemsPerPageReceitas));
+// Filtros de receitas
+let receitasFilters = {
+    dataInicial: null,
+    dataFinal: null,
+    ordenacao: 'newest'
+};
+
+const getTotalPagesReceitas = () => Math.max(1, Math.ceil(getFilteredReceitas().length / itemsPerPageReceitas));
 
 const updateReceitasCount = () => {
-    receitasTotalCount.textContent = `${receitasData.length} receitas`;
+    const filteredCount = getFilteredReceitas().length;
+    receitasTotalCount.textContent = `${filteredCount} receita${filteredCount !== 1 ? 's' : ''}`;
 };
 
 const addReceita = ({ nome, valor, data, descricao }) => {
@@ -282,38 +290,97 @@ const addReceita = ({ nome, valor, data, descricao }) => {
     updateDashboard();
 };
 
+// Função para converter data brasileira (dd/mm/yyyy) para objeto Date
+function parseDataBrasileira(dataStr) {
+    const parts = dataStr.split('/');
+    if (parts.length === 3) {
+        // Formato: dd/mm/yyyy
+        return new Date(parts[2], parts[1] - 1, parts[0]);
+    }
+    return null;
+}
+
+// Função para filtrar receitas
+function getFilteredReceitas() {
+    let filtered = [...receitasData];
+
+    // Aplicar filtro de data inicial
+    if (receitasFilters.dataInicial) {
+        const dataInicial = new Date(receitasFilters.dataInicial);
+        filtered = filtered.filter(receita => {
+            const dataReceita = parseDataBrasileira(receita.data);
+            return dataReceita && dataReceita >= dataInicial;
+        });
+    }
+
+    // Aplicar filtro de data final
+    if (receitasFilters.dataFinal) {
+        const dataFinal = new Date(receitasFilters.dataFinal);
+        dataFinal.setHours(23, 59, 59, 999); // Incluir todo o dia final
+        filtered = filtered.filter(receita => {
+            const dataReceita = parseDataBrasileira(receita.data);
+            return dataReceita && dataReceita <= dataFinal;
+        });
+    }
+
+    // Aplicar ordenação
+    filtered.sort((a, b) => {
+        const dateA = parseDataBrasileira(a.data);
+        const dateB = parseDataBrasileira(b.data);
+
+        if (receitasFilters.ordenacao === 'newest') {
+            return dateB - dateA; // Mais recentes primeiro
+        } else {
+            return dateA - dateB; // Mais antigos primeiro
+        }
+    });
+
+    return filtered;
+}
+
 // Função para renderizar receitas da página atual
 function renderReceitas() {
+    const filteredReceitas = getFilteredReceitas();
     const totalPagesReceitas = getTotalPagesReceitas();
+
     if (currentPageReceitas > totalPagesReceitas) {
         currentPageReceitas = totalPagesReceitas;
     }
 
     const startIndex = (currentPageReceitas - 1) * itemsPerPageReceitas;
     const endIndex = startIndex + itemsPerPageReceitas;
-    const pageData = receitasData.slice(startIndex, endIndex);
+    const pageData = filteredReceitas.slice(startIndex, endIndex);
 
     receitasTableBody.innerHTML = '';
 
-    pageData.forEach(receita => {
-        const row = document.createElement('div');
-        row.className = 'table-row';
-        row.innerHTML = `
-            <div class="table-col">${receita.data}</div>
-            <div class="table-col">${receita.nome}</div>
-            <div class="table-col">${receita.descricao}</div>
-            <div class="table-col income-value">+ R$ ${receita.valor}</div>
+    if (pageData.length === 0) {
+        receitasTableBody.innerHTML = `
+            <div style="text-align: center; padding: 40px; color: #6b7280; grid-column: 1 / -1;">
+                <p>Nenhuma receita encontrada com os filtros aplicados.</p>
+            </div>
         `;
-        receitasTableBody.appendChild(row);
-    });
+    } else {
+        pageData.forEach(receita => {
+            const row = document.createElement('div');
+            row.className = 'table-row';
+            row.innerHTML = `
+                <div class="table-col">${receita.data}</div>
+                <div class="table-col">${receita.nome}</div>
+                <div class="table-col">${receita.descricao}</div>
+                <div class="table-col income-value">+ R$ ${receita.valor}</div>
+            `;
+            receitasTableBody.appendChild(row);
+        });
+    }
 
     updatePagination(totalPagesReceitas);
+    updateReceitasCount();
 }
 
 // Função para atualizar controles de paginação
 function updatePagination(totalPagesReceitas) {
     paginationInfo.textContent = `Página ${currentPageReceitas} de ${totalPagesReceitas}`;
-    
+
     prevPageBtn.disabled = currentPageReceitas === 1;
     nextPageBtn.disabled = currentPageReceitas === totalPagesReceitas;
 }
@@ -332,6 +399,36 @@ nextPageBtn.addEventListener('click', () => {
         renderReceitas();
     }
 });
+
+// Event listeners para filtros de receitas
+const dataInicialReceitas = document.getElementById('dataInicialReceitas');
+const dataFinalReceitas = document.getElementById('dataFinalReceitas');
+const ordenacaoReceitas = document.getElementById('ordenacaoReceitas');
+const aplicarFiltrosReceitas = document.getElementById('aplicarFiltrosReceitas');
+const limparFiltrosReceitas = document.getElementById('limparFiltrosReceitas');
+
+if (aplicarFiltrosReceitas) {
+    aplicarFiltrosReceitas.addEventListener('click', () => {
+        receitasFilters.dataInicial = dataInicialReceitas.value || null;
+        receitasFilters.dataFinal = dataFinalReceitas.value || null;
+        receitasFilters.ordenacao = ordenacaoReceitas.value;
+        currentPageReceitas = 1;
+        renderReceitas();
+    });
+}
+
+if (limparFiltrosReceitas) {
+    limparFiltrosReceitas.addEventListener('click', () => {
+        dataInicialReceitas.value = '';
+        dataFinalReceitas.value = '';
+        ordenacaoReceitas.value = 'newest';
+        receitasFilters.dataInicial = null;
+        receitasFilters.dataFinal = null;
+        receitasFilters.ordenacao = 'newest';
+        currentPageReceitas = 1;
+        renderReceitas();
+    });
+}
 
 // Renderizar receitas quando a página de receitas for aberta
 navReceitas.addEventListener('click', () => {
@@ -385,10 +482,18 @@ let despesasData = [
 let currentPageDespesas = 1;
 const itemsPerPageDespesas = 20;
 
-const getTotalPagesDespesas = () => Math.max(1, Math.ceil(despesasData.length / itemsPerPageDespesas));
+// Filtros de despesas
+let despesasFilters = {
+    dataInicial: null,
+    dataFinal: null,
+    ordenacao: 'newest'
+};
+
+const getTotalPagesDespesas = () => Math.max(1, Math.ceil(getFilteredDespesas().length / itemsPerPageDespesas));
 
 const updateDespesasCount = () => {
-    despesasTotalCount.textContent = `${despesasData.length} despesas`;
+    const filteredCount = getFilteredDespesas().length;
+    despesasTotalCount.textContent = `${filteredCount} despesa${filteredCount !== 1 ? 's' : ''}`;
 };
 
 const addDespesa = ({ nome, valor, data, descricao }) => {
@@ -404,38 +509,87 @@ const addDespesa = ({ nome, valor, data, descricao }) => {
     updateDashboard();
 };
 
+// Função para filtrar despesas
+function getFilteredDespesas() {
+    let filtered = [...despesasData];
+
+    // Aplicar filtro de data inicial
+    if (despesasFilters.dataInicial) {
+        const dataInicial = new Date(despesasFilters.dataInicial);
+        filtered = filtered.filter(despesa => {
+            const dataDespesa = parseDataBrasileira(despesa.data);
+            return dataDespesa && dataDespesa >= dataInicial;
+        });
+    }
+
+    // Aplicar filtro de data final
+    if (despesasFilters.dataFinal) {
+        const dataFinal = new Date(despesasFilters.dataFinal);
+        dataFinal.setHours(23, 59, 59, 999); // Incluir todo o dia final
+        filtered = filtered.filter(despesa => {
+            const dataDespesa = parseDataBrasileira(despesa.data);
+            return dataDespesa && dataDespesa <= dataFinal;
+        });
+    }
+
+    // Aplicar ordenação
+    filtered.sort((a, b) => {
+        const dateA = parseDataBrasileira(a.data);
+        const dateB = parseDataBrasileira(b.data);
+
+        if (despesasFilters.ordenacao === 'newest') {
+            return dateB - dateA; // Mais recentes primeiro
+        } else {
+            return dateA - dateB; // Mais antigos primeiro
+        }
+    });
+
+    return filtered;
+}
+
 // Função para renderizar despesas da página atual
 function renderDespesas() {
+    const filteredDespesas = getFilteredDespesas();
     const totalPagesDespesas = getTotalPagesDespesas();
+
     if (currentPageDespesas > totalPagesDespesas) {
         currentPageDespesas = totalPagesDespesas;
     }
 
     const startIndex = (currentPageDespesas - 1) * itemsPerPageDespesas;
     const endIndex = startIndex + itemsPerPageDespesas;
-    const pageData = despesasData.slice(startIndex, endIndex);
+    const pageData = filteredDespesas.slice(startIndex, endIndex);
 
     despesasTableBody.innerHTML = '';
 
-    pageData.forEach(despesa => {
-        const row = document.createElement('div');
-        row.className = 'table-row';
-        row.innerHTML = `
-            <div class="table-col">${despesa.data}</div>
-            <div class="table-col">${despesa.nome}</div>
-            <div class="table-col">${despesa.descricao}</div>
-            <div class="table-col expense-value">- R$ ${despesa.valor}</div>
+    if (pageData.length === 0) {
+        despesasTableBody.innerHTML = `
+            <div style="text-align: center; padding: 40px; color: #6b7280; grid-column: 1 / -1;">
+                <p>Nenhuma despesa encontrada com os filtros aplicados.</p>
+            </div>
         `;
-        despesasTableBody.appendChild(row);
-    });
+    } else {
+        pageData.forEach(despesa => {
+            const row = document.createElement('div');
+            row.className = 'table-row';
+            row.innerHTML = `
+                <div class="table-col">${despesa.data}</div>
+                <div class="table-col">${despesa.nome}</div>
+                <div class="table-col">${despesa.descricao}</div>
+                <div class="table-col expense-value">- R$ ${despesa.valor}</div>
+            `;
+            despesasTableBody.appendChild(row);
+        });
+    }
 
     updatePaginationDespesas(totalPagesDespesas);
+    updateDespesasCount();
 }
 
 // Função para atualizar controles de paginação de despesas
 function updatePaginationDespesas(totalPagesDespesas) {
     paginationDespesasInfo.textContent = `Página ${currentPageDespesas} de ${totalPagesDespesas}`;
-    
+
     prevPageDespesasBtn.disabled = currentPageDespesas === 1;
     nextPageDespesasBtn.disabled = currentPageDespesas === totalPagesDespesas;
 }
@@ -455,6 +609,36 @@ nextPageDespesasBtn.addEventListener('click', () => {
     }
 });
 
+// Event listeners para filtros de despesas
+const dataInicialDespesas = document.getElementById('dataInicialDespesas');
+const dataFinalDespesas = document.getElementById('dataFinalDespesas');
+const ordenacaoDespesas = document.getElementById('ordenacaoDespesas');
+const aplicarFiltrosDespesas = document.getElementById('aplicarFiltrosDespesas');
+const limparFiltrosDespesas = document.getElementById('limparFiltrosDespesas');
+
+if (aplicarFiltrosDespesas) {
+    aplicarFiltrosDespesas.addEventListener('click', () => {
+        despesasFilters.dataInicial = dataInicialDespesas.value || null;
+        despesasFilters.dataFinal = dataFinalDespesas.value || null;
+        despesasFilters.ordenacao = ordenacaoDespesas.value;
+        currentPageDespesas = 1;
+        renderDespesas();
+    });
+}
+
+if (limparFiltrosDespesas) {
+    limparFiltrosDespesas.addEventListener('click', () => {
+        dataInicialDespesas.value = '';
+        dataFinalDespesas.value = '';
+        ordenacaoDespesas.value = 'newest';
+        despesasFilters.dataInicial = null;
+        despesasFilters.dataFinal = null;
+        despesasFilters.ordenacao = 'newest';
+        currentPageDespesas = 1;
+        renderDespesas();
+    });
+}
+
 // Renderizar despesas quando a página de despesas for aberta
 navDespesas.addEventListener('click', () => {
     showPage('despesas');
@@ -469,144 +653,144 @@ navAjuda.addEventListener('click', () => {
     showPage('ajuda');
 });
 
-// FAQ Functionality
-const faqItems = document.querySelectorAll('.faq-item');
-const faqFilterBtns = document.querySelectorAll('.faq-filter-btn');
+// // FAQ Functionality
+// const faqItems = document.querySelectorAll('.faq-item');
+// const faqFilterBtns = document.querySelectorAll('.faq-filter-btn');
 
-// Expandir/Colapsar FAQ items
-faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    question.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        
-        // Fechar todos os outros itens
-        faqItems.forEach(otherItem => {
-            if (otherItem !== item) {
-                otherItem.classList.remove('active');
-            }
-        });
-        
-        // Toggle do item clicado
-        if (isActive) {
-            item.classList.remove('active');
-        } else {
-            item.classList.add('active');
-        }
-    });
-});
+// // Expandir/Colapsar FAQ items
+// faqItems.forEach(item => {
+//     const question = item.querySelector('.faq-question');
+//     question.addEventListener('click', () => {
+//         const isActive = item.classList.contains('active');
 
-// Filtros FAQ
-faqFilterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Remover active de todos os botões
-        faqFilterBtns.forEach(b => b.classList.remove('active'));
-        // Adicionar active no botão clicado
-        btn.classList.add('active');
-        
-        const filter = btn.getAttribute('data-filter');
-        
-        // Filtrar FAQ items (por enquanto mostra todos, pode ser expandido depois)
-        // Esta funcionalidade pode ser implementada quando houver mais FAQs categorizadas
-    });
-});
+//         // Fechar todos os outros itens
+//         faqItems.forEach(otherItem => {
+//             if (otherItem !== item) {
+//                 otherItem.classList.remove('active');
+//             }
+//         });
 
-// Support Form Functionality
-const supportForm = document.getElementById('supportForm');
-const supportMessage = document.getElementById('supportMessage');
-const charCount = document.getElementById('charCount');
-const supportFileUploadArea = document.getElementById('supportFileUploadArea');
-const supportFile = document.getElementById('supportFile');
-const clearSupportFormBtn = document.getElementById('clearSupportFormBtn');
+//         // Toggle do item clicado
+//         if (isActive) {
+//             item.classList.remove('active');
+//         } else {
+//             item.classList.add('active');
+//         }
+//     });
+// });
 
-// Contador de caracteres
-if (supportMessage && charCount) {
-    supportMessage.addEventListener('input', () => {
-        const length = supportMessage.value.length;
-        charCount.textContent = length;
-        
-        if (length > 1000) {
-            charCount.style.color = '#ef4444';
-        } else {
-            charCount.style.color = '#6b7280';
-        }
-    });
-}
+// // Filtros FAQ
+// faqFilterBtns.forEach(btn => {
+//     btn.addEventListener('click', () => {
+//         // Remover active de todos os botões
+//         faqFilterBtns.forEach(b => b.classList.remove('active'));
+//         // Adicionar active no botão clicado
+//         btn.classList.add('active');
 
-// Upload de arquivo
-if (supportFileUploadArea && supportFile) {
-    supportFileUploadArea.addEventListener('click', () => {
-        supportFile.click();
-    });
+//         const filter = btn.getAttribute('data-filter');
 
-    supportFile.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const fileSize = file.size / 1024 / 1024; // MB
-            if (fileSize > 5) {
-                alert('O arquivo deve ter no máximo 5MB');
-                supportFile.value = '';
-                return;
-            }
-            
-            const fileUploadContent = supportFileUploadArea.querySelector('.file-upload-content span');
-            fileUploadContent.textContent = file.name;
-        }
-    });
+//         // Filtrar FAQ items (por enquanto mostra todos, pode ser expandido depois)
+//         // Esta funcionalidade pode ser implementada quando houver mais FAQs categorizadas
+//     });
+// });
 
-    // Drag and drop
-    supportFileUploadArea.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        supportFileUploadArea.querySelector('.file-upload-content').style.borderColor = '#2563eb';
-    });
+// // Support Form Functionality
+// const supportForm = document.getElementById('supportForm');
+// const supportMessage = document.getElementById('supportMessage');
+// const charCount = document.getElementById('charCount');
+// const supportFileUploadArea = document.getElementById('supportFileUploadArea');
+// const supportFile = document.getElementById('supportFile');
+// const clearSupportFormBtn = document.getElementById('clearSupportFormBtn');
 
-    supportFileUploadArea.addEventListener('dragleave', () => {
-        supportFileUploadArea.querySelector('.file-upload-content').style.borderColor = '#d1d5db';
-    });
+// // Contador de caracteres
+// if (supportMessage && charCount) {
+//     supportMessage.addEventListener('input', () => {
+//         const length = supportMessage.value.length;
+//         charCount.textContent = length;
 
-    supportFileUploadArea.addEventListener('drop', (e) => {
-        e.preventDefault();
-        supportFileUploadArea.querySelector('.file-upload-content').style.borderColor = '#d1d5db';
-        
-        const file = e.dataTransfer.files[0];
-        if (file) {
-            const fileSize = file.size / 1024 / 1024;
-            if (fileSize > 5) {
-                alert('O arquivo deve ter no máximo 5MB');
-                return;
-            }
-            supportFile.files = e.dataTransfer.files;
-            const fileUploadContent = supportFileUploadArea.querySelector('.file-upload-content span');
-            fileUploadContent.textContent = file.name;
-        }
-    });
-}
+//         if (length > 1000) {
+//             charCount.style.color = '#ef4444';
+//         } else {
+//             charCount.style.color = '#6b7280';
+//         }
+//     });
+// }
 
-// Limpar formulário
-if (clearSupportFormBtn && supportForm) {
-    clearSupportFormBtn.addEventListener('click', () => {
-        supportForm.reset();
-        if (charCount) charCount.textContent = '0';
-        if (supportFileUploadArea) {
-            const fileUploadContent = supportFileUploadArea.querySelector('.file-upload-content span');
-            fileUploadContent.textContent = 'Clique para selecionar ou arraste um arquivo';
-        }
-    });
-}
+// // Upload de arquivo
+// if (supportFileUploadArea && supportFile) {
+//     supportFileUploadArea.addEventListener('click', () => {
+//         supportFile.click();
+//     });
 
-// Submit do formulário
-if (supportForm) {
-    supportForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        console.log('Formulário de suporte enviado:', new FormData(supportForm));
-        alert('Solicitação enviada com sucesso! Entraremos em contato em até 24 horas úteis.');
-        supportForm.reset();
-        if (charCount) charCount.textContent = '0';
-        if (supportFileUploadArea) {
-            const fileUploadContent = supportFileUploadArea.querySelector('.file-upload-content span');
-            fileUploadContent.textContent = 'Clique para selecionar ou arraste um arquivo';
-        }
-    });
-}
+//     supportFile.addEventListener('change', (e) => {
+//         const file = e.target.files[0];
+//         if (file) {
+//             const fileSize = file.size / 1024 / 1024; // MB
+//             if (fileSize > 5) {
+//                 alert('O arquivo deve ter no máximo 5MB');
+//                 supportFile.value = '';
+//                 return;
+//             }
+
+//             const fileUploadContent = supportFileUploadArea.querySelector('.file-upload-content span');
+//             fileUploadContent.textContent = file.name;
+//         }
+//     });
+
+//     // Drag and drop
+//     supportFileUploadArea.addEventListener('dragover', (e) => {
+//         e.preventDefault();
+//         supportFileUploadArea.querySelector('.file-upload-content').style.borderColor = '#2563eb';
+//     });
+
+//     supportFileUploadArea.addEventListener('dragleave', () => {
+//         supportFileUploadArea.querySelector('.file-upload-content').style.borderColor = '#d1d5db';
+//     });
+
+//     supportFileUploadArea.addEventListener('drop', (e) => {
+//         e.preventDefault();
+//         supportFileUploadArea.querySelector('.file-upload-content').style.borderColor = '#d1d5db';
+
+//         const file = e.dataTransfer.files[0];
+//         if (file) {
+//             const fileSize = file.size / 1024 / 1024;
+//             if (fileSize > 5) {
+//                 alert('O arquivo deve ter no máximo 5MB');
+//                 return;
+//             }
+//             supportFile.files = e.dataTransfer.files;
+//             const fileUploadContent = supportFileUploadArea.querySelector('.file-upload-content span');
+//             fileUploadContent.textContent = file.name;
+//         }
+//     });
+// }
+
+// // Limpar formulário
+// if (clearSupportFormBtn && supportForm) {
+//     clearSupportFormBtn.addEventListener('click', () => {
+//         supportForm.reset();
+//         if (charCount) charCount.textContent = '0';
+//         if (supportFileUploadArea) {
+//             const fileUploadContent = supportFileUploadArea.querySelector('.file-upload-content span');
+//             fileUploadContent.textContent = 'Clique para selecionar ou arraste um arquivo';
+//         }
+//     });
+// }
+
+// // Submit do formulário
+// if (supportForm) {
+//     supportForm.addEventListener('submit', (e) => {
+//         e.preventDefault();
+//         console.log('Formulário de suporte enviado:', new FormData(supportForm));
+//         alert('Solicitação enviada com sucesso! Entraremos em contato em até 24 horas úteis.');
+//         supportForm.reset();
+//         if (charCount) charCount.textContent = '0';
+//         if (supportFileUploadArea) {
+//             const fileUploadContent = supportFileUploadArea.querySelector('.file-upload-content span');
+//             fileUploadContent.textContent = 'Clique para selecionar ou arraste um arquivo';
+//         }
+//     });
+// }
 
 // Renderizar despesas na primeira carga se estiver na página de despesas
 if (despesasContent && despesasContent.style.display !== 'none') {
@@ -717,7 +901,7 @@ function initDasDatePicker() {
                 }
             }
         }
-        
+
         dasDatePicker = flatpickr(mesAnoReferenciaInput, {
             locale: 'pt',
             dateFormat: 'Y-m',
@@ -726,12 +910,12 @@ function initDasDatePicker() {
             allowInput: false,
             clickOpens: true,
             static: false,
-            onChange: function(selectedDates, dateStr, instance) {
+            onChange: function (selectedDates, dateStr, instance) {
                 if (selectedDates.length > 0) {
                     mesAnoReferenciaInput.value = formatMonthYear(selectedDates[0]);
                 }
             },
-            onReady: function(selectedDates, dateStr, instance) {
+            onReady: function (selectedDates, dateStr, instance) {
                 // Formatar valor inicial
                 if (dateStr) {
                     const date = new Date(dateStr + '-01');
@@ -739,7 +923,7 @@ function initDasDatePicker() {
                 }
             }
         });
-        
+
         // Permitir clicar no ícone de calendário para abrir o datepicker
         const calendarIcon = mesAnoReferenciaInput.parentElement.querySelector('.calendar-icon');
         if (calendarIcon) {
@@ -963,17 +1147,17 @@ function getMonthlyData() {
     const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'];
     const monthlyReceitas = [0, 0, 0, 0, 0, 0];
     const monthlyDespesas = [0, 0, 0, 0, 0, 0];
-    
+
     // Simular distribuição dos dados pelos meses (em produção, isso viria dos dados reais)
     const totalReceitas = receitasData.reduce((sum, item) => sum + normalizeCurrency(item.valor), 0);
     const totalDespesas = despesasData.reduce((sum, item) => sum + normalizeCurrency(item.valor), 0);
-    
+
     // Distribuir valores pelos meses (simulação)
     for (let i = 0; i < 6; i++) {
         monthlyReceitas[i] = (totalReceitas / 6) * (1 + (i * 0.1));
         monthlyDespesas[i] = (totalDespesas / 6) * (1 + (i * 0.05));
     }
-    
+
     return { months, monthlyReceitas, monthlyDespesas };
 }
 
@@ -984,29 +1168,29 @@ function createCharts() {
         console.error('Chart.js não está carregado');
         return;
     }
-    
+
     const { months, monthlyReceitas, monthlyDespesas } = getMonthlyData();
-    
+
     // Calculate profit margin for each month
     const monthlyProfitMargin = monthlyReceitas.map((receita, i) => {
         const despesa = monthlyDespesas[i];
         const lucro = receita - despesa;
         return receita > 0 ? (lucro / receita) * 100 : 0;
     });
-    
+
     // Calculate monthly growth
     const monthlyGrowth = monthlyReceitas.map((receita, i) => {
         if (i === 0) return 5;
         const previous = monthlyReceitas[i - 1];
         return previous > 0 ? ((receita - previous) / previous) * 100 : 0;
     });
-    
+
     // Destroy existing charts if they exist
     if (cashFlowChart) cashFlowChart.destroy();
     if (profitMarginChart) profitMarginChart.destroy();
     if (revenueExpenseChart) revenueExpenseChart.destroy();
     if (monthlyEvolutionChart) monthlyEvolutionChart.destroy();
-    
+
     // 1. Fluxo de Caixa (Line Chart)
     const cashFlowCtx = document.getElementById('cashFlowChart');
     if (cashFlowCtx) {
@@ -1054,7 +1238,7 @@ function createCharts() {
                     y: {
                         beginAtZero: true,
                         ticks: {
-                            callback: function(value) {
+                            callback: function (value) {
                                 return 'R$ ' + (value / 1000).toFixed(0) + 'k';
                             }
                         }
@@ -1063,7 +1247,7 @@ function createCharts() {
             }
         });
     }
-    
+
     // 2. Margem de Lucro (Line Chart)
     const profitMarginCtx = document.getElementById('profitMarginChart');
     if (profitMarginCtx) {
@@ -1097,7 +1281,7 @@ function createCharts() {
                         beginAtZero: true,
                         max: 100,
                         ticks: {
-                            callback: function(value) {
+                            callback: function (value) {
                                 return value + '%';
                             }
                         }
@@ -1106,13 +1290,13 @@ function createCharts() {
             }
         });
     }
-    
+
     // 3. Receitas x Despesas (Doughnut Chart)
     const revenueExpenseCtx = document.getElementById('revenueExpenseChart');
     if (revenueExpenseCtx) {
         const totalReceitas = monthlyReceitas.reduce((a, b) => a + b, 0);
         const totalDespesas = monthlyDespesas.reduce((a, b) => a + b, 0);
-        
+
         revenueExpenseChart = new Chart(revenueExpenseCtx, {
             type: 'doughnut',
             data: {
@@ -1139,7 +1323,7 @@ function createCharts() {
             }
         });
     }
-    
+
     // 4. Evolução Mensal (Bar Chart)
     const monthlyEvolutionCtx = document.getElementById('monthlyEvolutionChart');
     if (monthlyEvolutionCtx) {
@@ -1166,7 +1350,7 @@ function createCharts() {
                     y: {
                         beginAtZero: true,
                         ticks: {
-                            callback: function(value) {
+                            callback: function (value) {
                                 return value + '%';
                             }
                         }
@@ -1200,7 +1384,7 @@ function updateReports() {
     document.getElementById('despesasChange').textContent = `+${despesasChange}%`;
     document.getElementById('lucroChange').textContent = `+${lucroChange}%`;
     document.getElementById('margemChange').textContent = `+${margemChange}%`;
-    
+
     // Create charts
     createCharts();
 }
@@ -1212,4 +1396,3 @@ if (logoutBtn) {
         window.location.href = 'index.html';
     });
 }
-
